@@ -1,17 +1,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:h="http://java.sun.com/jsf/html">
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui">
 <h:head>
 <title>Livraria Online</title>
+<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+<h:outputStylesheet library="css" name="business-casual.css"></h:outputStylesheet>
 </h:head>
 <h:body>
-	<h:form>
-		<h:panelGrid columns="2">
-			<h:outputLabel value="Nome:" for="nome"></h:outputLabel>
-			<h:inputText id="nome"></h:inputText>
-			<h:commandButton value="Clique-me"></h:commandButton>
-		</h:panelGrid>
-	</h:form>
+<div class="brand">Livraria Digital</div>
+    <div class="container">
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                	<hr/>
+                    <h2 class="intro-text text-center">Login</h2>
+                    <hr/>
+                    <div class="span2"></div>
+					<h:form>
+						<h:panelGrid columns="2" cellpadding="5">
+							<p:outputLabel value="Nome:"></p:outputLabel>
+							<p:inputText value="#{usuarioBean.nome}"/>
+							<p:outputLabel value="Senha:"></p:outputLabel>
+				       	 	<p:password id="feedback" value="#{usuarioBean.senha}"/>
+				       	 	<p:commandButton value="Login" actionListener="#{usuarioBean.login}"></p:commandButton>
+						</h:panelGrid>
+					</h:form>
+                </div>
+            </div>
+        </div>
+    </div>
 </h:body>
 </html>
