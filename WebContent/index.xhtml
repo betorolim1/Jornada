@@ -20,14 +20,15 @@
                     <div class="col-xs-6 col-sm-4"></div>
 					<h:form>
 						<h:panelGrid columns="2" cellpadding="5">
-							<p:outputLabel value="Nome:"></p:outputLabel>
+							<p:outputLabel value="Login:"></p:outputLabel>
 							<p:inputText value="#{usuarioBean.nome}"/>
 							<p:outputLabel value="Senha:"></p:outputLabel>
 				       	 	<p:password id="feedback" value="#{usuarioBean.senha}"/>
 				       	 	<p:commandButton value="Login" actionListener="#{usuarioBean.login}"></p:commandButton>
 						</h:panelGrid>
 					</h:form>
-					<p>Não é cadastrado? <a href="cadastro.xhtml">Cadastrar-me</a> </p>
+					<br></br>
+					<small>Não é cadastrado? <a href="cadastro.xhtml">Cadastrar-me</a> </small>
                 </div>
             </div>
         </div>
