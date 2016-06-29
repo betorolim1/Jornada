@@ -1,5 +1,9 @@
+package Bean;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
+
+import Dao.UsuarioDao;
+import Modelo.Usuario;
 
 @Model
 public class UsuarioBean {
