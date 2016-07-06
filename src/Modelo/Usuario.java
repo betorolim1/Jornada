@@ -10,7 +10,7 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String login;
+	private String nome;
 	private String senha;
 	private String email;
 	private int perfil;
@@ -20,12 +20,6 @@ public class Usuario {
 	}
 	public void setId(Long id) {
 		this.id = id;
-	}
-	public String getLogin() {
-		return login;
-	}
-	public void setLogin(String login) {
-		this.login = login;
 	}
 	public String getSenha() {
 		return senha;
@@ -44,6 +38,12 @@ public class Usuario {
 	}
 	public void setPerfil(int perfil) {
 		this.perfil = perfil;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 }
