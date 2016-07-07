@@ -5,7 +5,7 @@ import javax.inject.Inject;
 import Dao.UsuarioDao;
 import Modelo.Usuario;
 
-@Model
+@Model //@RequestScoped e @Named
 public class UsuarioBean {
 	
 	private Usuario usuario = new Usuario();
