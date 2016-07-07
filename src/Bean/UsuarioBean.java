@@ -21,9 +21,8 @@ public class UsuarioBean {
 		this.usuario = usuario;
 	}
 
-	public String cadastrar(){
+	public void cadastrar(){
 		dao.adiciona(usuario);
-		return "index";
 	}
 	
 }
