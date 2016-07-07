@@ -17,14 +17,17 @@
                 	<hr/>
                     <h2 class="intro-text text-center">Login</h2>
                     <hr/>
+                    <h:form>
+				    	<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+				    </h:form>
                     <div class="col-xs-6 col-sm-4"></div>
 					<h:form>
 						<h:panelGrid columns="2" cellpadding="5">
-							<p:outputLabel value="Login:"></p:outputLabel>
-							<p:inputText value="#{usuarioBean.usuario.nome}"/>
+							<p:outputLabel value="Login:" ></p:outputLabel>
+							<p:inputText value="#{usuarioBean.usuario.nome}" required="true"/>
 							<p:outputLabel value="Senha:"></p:outputLabel>
-				       	 	<p:password id="feedback" value="#{usuarioBean.usuario.senha}"/>
-				       	 	<p:commandButton value="Login" actionListener="#{usuarioBean.login}"></p:commandButton>
+				       	 	<p:password id="feedback" value="#{usuarioBean.usuario.senha}" required="true"/>
+				       	 	<p:commandButton value="Login" action="#{usuarioBean.login}"></p:commandButton>
 						</h:panelGrid>
 					</h:form>
 					<br></br>

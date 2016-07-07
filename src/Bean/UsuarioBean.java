@@ -26,4 +26,15 @@ public class UsuarioBean {
 		return "principal?faces-redirect=true";
 	}
 	
+	public String login(){
+		boolean login = dao.existe(usuario);
+		System.out.println(login);
+		if(login == true){
+			return "principal?faces-redirect=true";
+		}else{ 
+			this.usuario = new Usuario();
+			return "index?faces-redirect=true";
+		}
+	}
+	
 }
