@@ -11,6 +11,7 @@
 
    <!-- entidade mapeada -->
    <class>Modelo.Usuario</class>
+   <class>Modelo.Livro</class>
 
    <properties>
   <!-- dados da conexao -->
