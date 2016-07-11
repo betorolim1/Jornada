@@ -1,5 +1,4 @@
 package Bean;
-
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 
