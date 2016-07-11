@@ -1,5 +1,9 @@
 package Bean;
+import java.io.IOException;
+
 import javax.enterprise.inject.Model;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import Dao.UsuarioDao;
@@ -26,14 +30,14 @@ public class UsuarioBean {
 		return "principal?faces-redirect=true";
 	}
 	
-	public String login(){
+	public void login() throws IOException{
 		boolean login = dao.existe(usuario);
 		System.out.println(login);
 		if(login == true){
-			return "principal?faces-redirect=true";
+			FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
 		}else{ 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Login Invalido", null));
 			this.usuario = new Usuario();
-			return "index?faces-redirect=true";
 		}
 	}
 	
