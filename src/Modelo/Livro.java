@@ -5,8 +5,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
-import org.primefaces.model.UploadedFile;
-
 @Entity
 public class Livro {
 	
@@ -15,7 +13,7 @@ public class Livro {
 	private Long id;
 	@NotNull
 	private String Titulo;
-	private UploadedFile Capa;
+	private Byte[] Capa;
 	@NotNull
 	private String Autor;
 	@NotNull
@@ -38,12 +36,6 @@ public class Livro {
 	}
 	public void setTitulo(String titulo) {
 		Titulo = titulo;
-	}
-	public UploadedFile getCapa() {
-		return Capa;
-	}
-	public void setCapa(UploadedFile capa) {
-		Capa = capa;
 	}
 	public String getAutor() {
 		return Autor;
@@ -74,6 +66,12 @@ public class Livro {
 	}
 	public void setPrecoCombo(double precoCombo) {
 		this.precoCombo = precoCombo;
+	}
+	public Byte[] getCapa() {
+		return Capa;
+	}
+	public void setCapa(Byte[] capa) {
+		Capa = capa;
 	}
 	
 }
