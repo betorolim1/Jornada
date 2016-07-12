@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 public class Livro {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@NotNull
 	private String Titulo;

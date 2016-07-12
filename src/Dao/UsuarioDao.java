@@ -27,5 +27,9 @@ public class UsuarioDao {
 		boolean encontrado = !busca.getResultList().isEmpty();
 		return encontrado;
 	}
+	
+	public Usuario buscaPorId(Long id) {
+		return manager.find(Usuario.class, id);
+	}
 
 }
