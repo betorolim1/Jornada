@@ -28,8 +28,8 @@ public class UsuarioDao {
 		return encontrado;
 	}
 	
-	public Usuario buscaPorId(Long id) {
-		return manager.find(Usuario.class, id);
+	public Usuario buscaPorLogin(String login) {
+		return manager.find(Usuario.class, login);
 	}
 
 }

@@ -26,11 +26,10 @@ public class UsuarioBean {
 	}
 
 	public String cadastrar(){
-		Long id = this.usuario.getId();
+		//String login = usuario.getNome();
 		dao.adiciona(usuario);
 		//this.usuario = new Usuario();
-		//this.usuario = dao.buscaPorId(id);
-		System.out.println("Id " + id);
+		//this.usuario = dao.buscaPorLogin(login);
 		return "principal?faces-redirect=true";
 	}
 	

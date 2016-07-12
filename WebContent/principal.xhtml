@@ -17,8 +17,9 @@
     <div class="brand">Livraria Digital</div>
 
 	<div class="menu col-xs-12 col-sm-12 col-md-12">
-		<h:dataTable value="#{usuarioBean.usuario}" var="usuario">
-			<h2 class="intro-text text-center">Seja bem vindo <h:column>#{usuario.nome}</h:column> </h2>
+		
+			<h2 class="intro-text text-center">Seja bem vindo </h2>
+			<h:dataTable value="#{usuarioBean.usuario}" var="usuario"> #{usuario.nome} 
 		</h:dataTable>
 		
 		 <p:megaMenu style="margin-top:20px;" styleClass="col-md-2">
