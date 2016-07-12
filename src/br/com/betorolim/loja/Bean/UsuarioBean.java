@@ -29,12 +29,16 @@ public class UsuarioBean {
 		this.usuario = usuario;
 	}
 
-	public String cadastrar(){
+	public void cadastrar() throws IOException{
 		//String login = usuario.getLogin();
-		dao.adiciona(usuario);
+		if(!dao.existePorNome(usuario)){
+				dao.adiciona(usuario);
+				FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
+		}else{
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Login ja utilizado", null));
+		}
 		//this.usuario = new Usuario();
 		//this.usuario = dao.buscaPorLogin(login);
-		return "principal?faces-redirect=true";
 	}
 	
 	public void login() throws IOException{

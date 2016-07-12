@@ -22,9 +22,16 @@ public class UsuarioDao {
 		manager.getTransaction().commit();
 	}
 	
+	public boolean existePorNome(Usuario usuario) {
+		Query busca = manager.createQuery("select usuario from Usuario usuario where usuario.login = :login")
+				.setParameter("login", usuario.getLogin());
+		boolean encontrado = !busca.getResultList().isEmpty();
+		return encontrado;
+	}
+	
 	public boolean existe(Usuario usuario) {
-		Query busca = manager.createQuery("select usuario from Usuario usuario where usuario.nome = :nome"
-				+ " and usuario.senha = :senha").setParameter("nome", usuario.getLogin())
+		Query busca = manager.createQuery("select usuario from Usuario usuario where usuario.login = :login"
+				+ " and usuario.senha = :senha").setParameter("login", usuario.getLogin())
 				.setParameter("senha", usuario.getSenha());
 		boolean encontrado = !busca.getResultList().isEmpty();
 		return encontrado;
