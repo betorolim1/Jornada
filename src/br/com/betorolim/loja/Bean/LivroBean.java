@@ -1,9 +1,9 @@
-package Bean;
+package br.com.betorolim.loja.Bean;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 
-import Dao.LivroDao;
-import Modelo.Livro;
+import br.com.betorolim.loja.Dao.LivroDao;
+import br.com.betorolim.loja.Modelo.Livro;
 
 @Model
 public class LivroBean {

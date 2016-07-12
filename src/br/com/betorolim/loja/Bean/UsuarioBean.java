@@ -1,15 +1,21 @@
-package Bean;
+package br.com.betorolim.loja.Bean;
 import java.io.IOException;
+
 
 import javax.enterprise.inject.Model;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.inject.Named;
 
-import Dao.UsuarioDao;
-import Modelo.Usuario;
+import br.com.betorolim.loja.Dao.UsuarioDao;
+import br.com.betorolim.loja.Modelo.Usuario;
 
-@Model //@RequestScoped e @Named
+//@Model //@RequestScoped e @Named
+@ManagedBean
+@SessionScoped
 public class UsuarioBean {
 	
 	private Usuario usuario = new Usuario();

@@ -1,10 +1,10 @@
-package Dao;
+package br.com.betorolim.loja.Dao;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 
-import Modelo.Livro;
+import br.com.betorolim.loja.Modelo.Livro;
 
 @Named
 @Dependent
