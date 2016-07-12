@@ -15,7 +15,7 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Size(min=4, max=20, message="Nome deve ter no minimo 4 e no maximo 20 caracteres")
-	private String nome;
+	private String login;
 	@Size(min=4, max=20, message="Senha deve ter no minimo 4 e no maximo 20 caracteres")
 	private String senha;
 	@Email
@@ -47,11 +47,11 @@ public class Usuario {
 	public void setPerfil(int perfil) {
 		this.perfil = perfil;
 	}
-	public String getNome() {
-		return nome;
+	public String getLogin() {
+		return login;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setLogin(String nome) {
+		this.login = nome;
 	}
 
 }

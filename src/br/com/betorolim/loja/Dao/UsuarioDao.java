@@ -24,7 +24,7 @@ public class UsuarioDao {
 	
 	public boolean existe(Usuario usuario) {
 		Query busca = manager.createQuery("select usuario from Usuario usuario where usuario.nome = :nome"
-				+ " and usuario.senha = :senha").setParameter("nome", usuario.getNome())
+				+ " and usuario.senha = :senha").setParameter("nome", usuario.getLogin())
 				.setParameter("senha", usuario.getSenha());
 		boolean encontrado = !busca.getResultList().isEmpty();
 		return encontrado;

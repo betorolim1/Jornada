@@ -10,8 +10,8 @@
    <provider>org.hibernate.ejb.HibernatePersistence</provider>
 
    <!-- entidade mapeada -->
-   <class>Modelo.Usuario</class>
-   <class>Modelo.Livro</class>
+   <class>br.com.betorolim.loja.Modelo.Usuario</class>
+   <class>br.com.betorolim.loja.Modelo.Livro</class>
 
    <properties>
   <!-- dados da conexao -->

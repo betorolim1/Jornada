@@ -2,13 +2,11 @@ package br.com.betorolim.loja.Bean;
 import java.io.IOException;
 
 
-import javax.enterprise.inject.Model;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import br.com.betorolim.loja.Dao.UsuarioDao;
 import br.com.betorolim.loja.Modelo.Usuario;
@@ -32,7 +30,7 @@ public class UsuarioBean {
 	}
 
 	public String cadastrar(){
-		//String login = usuario.getNome();
+		//String login = usuario.getLogin();
 		dao.adiciona(usuario);
 		//this.usuario = new Usuario();
 		//this.usuario = dao.buscaPorLogin(login);
