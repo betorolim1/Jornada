@@ -28,6 +28,14 @@ public class UsuarioBean {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+	
+	public void isLogado() throws IOException {
+		if (usuario == null) {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+		}else{
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Login ja utilizado", null));
+		}
+	}
 
 	public void cadastrar() throws IOException{
 		//String login = usuario.getLogin();
