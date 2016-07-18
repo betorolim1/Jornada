@@ -1,53 +1,44 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:p="http://primefaces.org/ui">
-<h:head>
-<title>Livraria Online</title>
-<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
-<h:outputStylesheet library="css" name="business-casual.css"></h:outputStylesheet>
-</h:head>
-<h:body>
-<div class="brand">Livraria Digital</div>
-    <div class="container">
-        <div class="row">
-            <div class="box">
-                <div class="col-lg-12">
-                <p:breadCrumb>
-			    <p:menuitem value="Login" url="index.xhtml" />
-			    <p:menuitem value="Cadastro" url="#" />
-			</p:breadCrumb>	
-                	<hr/>
-                    <h2 class="intro-text text-center">Cadastro</h2>
-                    <hr/>
-                    <h:form>
-					    <p:messages id="mensagemErro" showDetail="false" autoUpdate="true" closable="true" />
-					</h:form>
-                    <div class="col-xs-6 col-sm-4"></div>
-					<h:form>
-						<h:panelGrid columns="2" cellpadding="5">
-							<p:outputLabel value="Login:"></p:outputLabel>
-							<p:inputText value="#{usuarioBean.usuario.login}"/>
-							<p:outputLabel value="Senha:"></p:outputLabel>
-				       	 	<p:password id="feedback" value="#{usuarioBean.usuario.senha}"/>
-				       	 	<p:outputLabel value="E-mail:"></p:outputLabel>
-				       	 	<p:inputText value="#{usuarioBean.usuario.email}"></p:inputText>
-				       	 	<p:commandButton value="Cadastrar" action="#{usuarioBean.cadastrar}"></p:commandButton>
-						</h:panelGrid>
-					</h:form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <p>Copyright &copy; Adalberto R. Nogueira 2016</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-</h:body>
-</html>
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	template="top.xhtml">
+
+	<ui:define name="corpo">
+
+		<div class="container">
+			<div class="row">
+				<div class="box">
+					<div class="col-lg-12">
+						<p:breadCrumb>
+							<p:menuitem value="Login" url="index.xhtml" />
+							<p:menuitem value="Cadastro" url="#" />
+						</p:breadCrumb>
+						<hr />
+						<h2 class="intro-text text-center">Cadastro</h2>
+						<hr />
+						<h:form>
+							<p:messages id="mensagemErro" showDetail="false"
+								autoUpdate="true" closable="true" />
+						</h:form>
+						<div class="col-xs-6 col-sm-4"></div>
+						<h:form>
+							<h:panelGrid columns="2" cellpadding="5">
+								<p:outputLabel value="Login:"></p:outputLabel>
+								<p:inputText value="#{usuarioBean.usuario.login}" />
+								<p:outputLabel value="Senha:"></p:outputLabel>
+								<p:password id="feedback" value="#{usuarioBean.usuario.senha}" />
+								<p:outputLabel value="E-mail:"></p:outputLabel>
+								<p:inputText value="#{usuarioBean.usuario.email}"></p:inputText>
+								<p:commandButton value="Cadastrar"
+									action="#{usuarioBean.cadastrar}"></p:commandButton>
+							</h:panelGrid>
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:decorate>

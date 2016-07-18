@@ -1,106 +1,105 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:p="http://primefaces.org/ui">
-<h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Livraria Online</title>
-<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
-<h:outputStylesheet library="css" name="business-casual.css"></h:outputStylesheet>
-<h:outputStylesheet library="css" name="estilo.css"></h:outputStylesheet>
-<h:outputScript library="js" name="jquery.js"></h:outputScript>
-<h:outputScript library="js" name="bootstrap.js"></h:outputScript>
-</h:head>
-<h:body>
-    <div class="brand">Livraria Digital</div>
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets" template="top.xhtml">
 
-	<div class="menu col-xs-12 col-sm-12 col-md-12">
+	<ui:define name="corpo">
 
-		<div class="col-xs-4 col-sm-5 col-md-5"></div>
-		
-				<h:form>
-		    
-        
-        <p:growl id="growl" showDetail="false" sticky="true" /> 
-        	<h:panelGrid columns="2" cellpadding="5"> 
+		<div class="menu col-xs-12 col-sm-12 col-md-12">
+
+			<div class="col-xs-4 col-sm-5 col-md-5"></div>
+
+			<h:form>
+
+
+				<p:growl id="growl" showDetail="false" sticky="true" />
+				<h:panelGrid columns="2" cellpadding="5">
 
 
 
-			 <p:megaMenu style="margin-top:20px;" styleClass="col-xs-12 col-sm-12 col-md-12">
-				 <p:menuitem value="Login" action="#{usuarioBean.menuLogin}" icon="ui-icon-check" update="growl"/>
-				 <p:menuitem value="Carrinho" action="#{usuarioBean.menuCarrinho}" icon="ui-icon-cart" update="growl"/>
-				 <p:menuitem value="Logout" action="#{usuarioBean.menuLogout}" icon="ui-icon-close" update="growl"/>
-			</p:megaMenu>
-				</h:panelGrid>  
+					<p:megaMenu style="margin-top:20px;"
+						styleClass="col-xs-12 col-sm-12 col-md-12">
+						<p:menuitem value="Login" action="#{usuarioBean.menuLogin}"
+							icon="ui-icon-check" update="growl" />
+						<p:menuitem value="Carrinho" action="#{usuarioBean.menuCarrinho}"
+							icon="ui-icon-cart" update="growl" />
+						<p:menuitem value="Logout" action="#{usuarioBean.menuLogout}"
+							icon="ui-icon-close" update="growl" />
+					</p:megaMenu>
+				</h:panelGrid>
 
-		</h:form>
+			</h:form>
 
-	</div>
-	
-    <div class="container">
+		</div>
 
-        <div class="row">
-            <div class="box">
-                <div class="col-lg-12">
-                    <hr></hr>
-                    <h2 class="intro-text text-center">Seja bem vindo(a) #{usuarioBean.usuario.login} </h2>
-                    <hr></hr>
-                </div>
-                <div class="col-lg-12 text-center">
-                    <img class="img-responsive img-border img-full" src="img/slide-1.jpg" alt=""></img>
-                    <h2>Post Title
-                        <br/>
-                        <small>October 13, 2013</small>
-                    </h2>
-                    <p>Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                    <a href="#" class="btn btn-default btn-lg">Read More</a>
-                    <hr/>
-                </div>
-                <div class="col-lg-12 text-center">
-                    <img class="img-responsive img-border img-full" src="img/slide-2.jpg" alt="alt"></img>
-                    <h2>Post Title
-                        <br></br>
-                        <small>October 13, 2013</small>
-                    </h2>
-                    <p>Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                    <a href="#" class="btn btn-default btn-lg">Read More</a>
-                    <hr></hr>
-                </div>
-                <div class="col-lg-12 text-center">
-                    <img class="img-responsive img-border img-full" src="img/slide-3.jpg" alt=""></img>
-                    <h2>Post Title
-                        <br></br>
-                        <small>October 13, 2013</small>
-                    </h2>
-                    <p>Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                    <a href="#" class="btn btn-default btn-lg">Read More</a>
-                    <hr></hr>
-                </div>
-                <div class="col-lg-12 text-center">
-                    <ul class="pager">
-                        <li class="previous"><a href="#">&larr; Older</a>
-                        </li>
-                        <li class="next"><a href="#">Newer &rarr;</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+		<div class="container">
 
-    </div>
-    <!-- /.container -->
+			<div class="row">
+				<div class="box">
+					<div class="col-lg-12">
+						<hr></hr>
+						<h2 class="intro-text text-center">Seja bem vindo(a)
+							#{usuarioBean.usuario.login}</h2>
+						<hr></hr>
+					</div>
+					<div class="col-lg-12 text-center">
+						<img class="img-responsive img-border img-full"
+							src="img/slide-1.jpg" alt=""></img>
+						<h2>
+							Post Title <br /> <small>October 13, 2013</small>
+						</h2>
+						<p>Lid est laborum dolo rumes fugats untras. Etharums ser
+							quidem rerum facilis dolores nemis omnis fugats vitaes nemo
+							minima rerums unsers sadips amets. Sed ut perspiciatis unde omnis
+							iste natus error sit voluptatem accusantium doloremque
+							laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+							veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+						<a href="#" class="btn btn-default btn-lg">Read More</a>
+						<hr />
+					</div>
+					<div class="col-lg-12 text-center">
+						<img class="img-responsive img-border img-full"
+							src="img/slide-2.jpg" alt="alt"></img>
+						<h2>
+							Post Title <br></br> <small>October 13, 2013</small>
+						</h2>
+						<p>Lid est laborum dolo rumes fugats untras. Etharums ser
+							quidem rerum facilis dolores nemis omnis fugats vitaes nemo
+							minima rerums unsers sadips amets. Sed ut perspiciatis unde omnis
+							iste natus error sit voluptatem accusantium doloremque
+							laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+							veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+						<a href="#" class="btn btn-default btn-lg">Read More</a>
+						<hr></hr>
+					</div>
+					<div class="col-lg-12 text-center">
+						<img class="img-responsive img-border img-full"
+							src="img/slide-3.jpg" alt=""></img>
+						<h2>
+							Post Title <br></br> <small>October 13, 2013</small>
+						</h2>
+						<p>Lid est laborum dolo rumes fugats untras. Etharums ser
+							quidem rerum facilis dolores nemis omnis fugats vitaes nemo
+							minima rerums unsers sadips amets. Sed ut perspiciatis unde omnis
+							iste natus error sit voluptatem accusantium doloremque
+							laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+							veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+						<a href="#" class="btn btn-default btn-lg">Read More</a>
+						<hr></hr>
+					</div>
+					<div class="col-lg-12 text-center">
+						<ul class="pager">
+							<li class="previous"><a href="#">&larr; Older</a></li>
+							<li class="next"><a href="#">Newer &rarr;</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
 
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <p>Copyright &copy; Adalberto R. Nogueira 2016</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-                   
-</h:body>
-</html>
+		</div>
+		<!-- /.container -->
+
+	</ui:define>
+</ui:decorate>
