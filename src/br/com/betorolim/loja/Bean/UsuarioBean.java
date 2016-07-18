@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.persistence.PersistenceException;
 
 import br.com.betorolim.loja.Dao.UsuarioDao;
 import br.com.betorolim.loja.Modelo.Usuario;
@@ -60,15 +61,16 @@ public class UsuarioBean {
 	}
 
 	public void cadastrar() throws IOException{
-		//String login = usuario.getLogin();
-		if(!dao.existePorNome(usuario)){
-				dao.adiciona(usuario);
-				FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
-		}else{
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Login ja utilizado", null));
+		try{
+			if(!dao.existePorNome(usuario)){
+					dao.adiciona(usuario);
+					FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
+			}else{
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Login ja utilizado", null));
+			}
+		}catch(PersistenceException e){
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Não autorizado", null));
 		}
-		//this.usuario = new Usuario();
-		//this.usuario = dao.buscaPorLogin(login);
 	}
 	
 	public void login() throws IOException{
