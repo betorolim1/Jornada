@@ -29,12 +29,34 @@ public class UsuarioBean {
 		this.usuario = usuario;
 	}
 	
-	public void isLogado() throws IOException {
+	public boolean isLogado() {
 		if (usuario.getLogin() == null) {
+			return false;
+		}else{
+			return true;
+		}
+	}
+	
+	public void menuLogin() throws IOException {
+		if(this.isLogado()){
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario já logado", null));
+		}else{
+			FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+		}
+	}
+	
+	public void menuCarrinho() {
+		
+	}
+	
+	public void menuLogout() throws IOException {
+		if(this.isLogado()){
+			this.usuario = new Usuario();
 			FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
 		}else{
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario já logado", null));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario não está logado", null));
 		}
+		
 	}
 
 	public void cadastrar() throws IOException{
