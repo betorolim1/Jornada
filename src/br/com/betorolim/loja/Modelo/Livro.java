@@ -12,12 +12,12 @@ public class Livro {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@NotNull
-	private String Titulo;
-	private byte[] Capa;
+	private String titulo;
+	private String capa;
 	@NotNull
-	private String Autor;
+	private String autor;
 	@NotNull
-	private String Descricao;
+	private String descricao;
 	@NotNull
 	private double precoEbook;
 	@NotNull
@@ -32,22 +32,25 @@ public class Livro {
 		this.id = id;
 	}
 	public String getTitulo() {
-		return Titulo;
+		return titulo;
 	}
 	public void setTitulo(String titulo) {
-		Titulo = titulo;
+		this.titulo = titulo;
 	}
 	public String getAutor() {
-		return Autor;
+		return autor;
 	}
 	public void setAutor(String autor) {
-		Autor = autor;
+		this.autor = autor;
 	}
 	public String getDescricao() {
-		return Descricao;
+		return descricao;
 	}
 	public void setDescricao(String descricao) {
-		Descricao = descricao;
+		this.descricao = descricao;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public double getPrecoEbook() {
 		return precoEbook;
@@ -67,11 +70,11 @@ public class Livro {
 	public void setPrecoCombo(double precoCombo) {
 		this.precoCombo = precoCombo;
 	}
-	public byte[] getCapa() {
-		return Capa;
+	public String getCapa() {
+		return capa;
 	}
-	public void setCapa(byte[] capa) {
-		Capa = capa;
+	public void setCapa(String capa) {
+		this.capa = capa;
 	}
 	
 }
