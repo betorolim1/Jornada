@@ -9,7 +9,7 @@ import br.com.betorolim.loja.Modelo.Livro;
 @Named
 @Dependent
 public class LivroDao {
-
+	
 	@Inject
 	private EntityManager manager;
 	

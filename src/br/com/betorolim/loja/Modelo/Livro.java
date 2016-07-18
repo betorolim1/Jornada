@@ -13,7 +13,7 @@ public class Livro {
 	private Long id;
 	@NotNull
 	private String Titulo;
-	private Byte[] Capa;
+	private byte[] Capa;
 	@NotNull
 	private String Autor;
 	@NotNull
@@ -67,10 +67,10 @@ public class Livro {
 	public void setPrecoCombo(double precoCombo) {
 		this.precoCombo = precoCombo;
 	}
-	public Byte[] getCapa() {
+	public byte[] getCapa() {
 		return Capa;
 	}
-	public void setCapa(Byte[] capa) {
+	public void setCapa(byte[] capa) {
 		Capa = capa;
 	}
 	

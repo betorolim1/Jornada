@@ -23,14 +23,17 @@
                     <hr/>
                     <h:form>
 					    <p:messages id="mensagemErro" showDetail="false" autoUpdate="true" closable="true" />
+					    
 					</h:form>
                     <div class="col-xs-6 col-sm-4"></div>
 					<h:form>
+					
 						<h:panelGrid columns="2" cellpadding="5">
 							<p:outputLabel value="Titulo:"></p:outputLabel>
 							<p:inputText value="#{livroBean.livro.titulo}"/>
 							<p:outputLabel value="Capa:"></p:outputLabel>
-				       	 	<p:inputText id="feedback" value="#{livroBean.livro.capa}"/>
+   							<p:fileUpload fileUploadListener="#{livroBean.fileUpload}" mode="advanced" dragDropSupport="false"
+           						sizeLimit="100000" fileLimit="1" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
 				       	 	<p:outputLabel value="Autor:"></p:outputLabel>
 				       	 	<p:inputText value="#{livroBean.livro.autor}"></p:inputText>
 				       	 	<p:outputLabel value="Descrição:"></p:outputLabel>
