@@ -30,10 +30,10 @@ public class UsuarioBean {
 	}
 	
 	public void isLogado() throws IOException {
-		if (usuario == null) {
+		if (usuario.getLogin() == null) {
 			FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
 		}else{
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Login ja utilizado", null));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Usuario ja logado", null));
 		}
 	}
 
