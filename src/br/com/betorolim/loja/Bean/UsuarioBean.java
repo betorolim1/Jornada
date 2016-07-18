@@ -33,7 +33,7 @@ public class UsuarioBean {
 		if (usuario.getLogin() == null) {
 			FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
 		}else{
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Usuario ja logado", null));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario já logado", null));
 		}
 	}
 

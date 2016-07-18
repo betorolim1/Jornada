@@ -15,21 +15,26 @@
 </h:head>
 <h:body>
     <div class="brand">Livraria Digital</div>
-    
-    	<h:form>
-			<p:messages id="messages" showDetail="false" autoUpdate="true" closable="true" />
-		</h:form>
 
 	<div class="menu col-xs-12 col-sm-12 col-md-12">
 
 		<div class="col-xs-4 col-sm-5 col-md-5"></div>
 		
-		<h:form>
+				<h:form>
+		    
+        
+        <p:growl id="growl" showDetail="false" sticky="true" /> 
+        	<h:panelGrid columns="2" cellpadding="5"> 
+
+
+
 			 <p:megaMenu style="margin-top:20px;" styleClass="col-xs-12 col-sm-12 col-md-12">
-				 <p:menuitem value="Login" action="#{usuarioBean.isLogado}" icon="ui-icon-check" />
+				 <p:menuitem value="Login" action="#{usuarioBean.isLogado}" icon="ui-icon-check" update="growl"/>
 				 <p:menuitem value="Carrinho" url="http://www.primefaces.org" icon="ui-icon-cart" />
 				 <p:menuitem value="Logout" url="http://www.primefaces.org" icon="ui-icon-close" />
 			</p:megaMenu>
+				</h:panelGrid>  
+
 		</h:form>
 
 	</div>
