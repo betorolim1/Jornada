@@ -6,7 +6,6 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
