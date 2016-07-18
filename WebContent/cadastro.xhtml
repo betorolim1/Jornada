@@ -3,8 +3,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets" 
-	template="_template.xhtml">
+	xmlns:ui="http://java.sun.com/jsf/facelets" template="_template.xhtml">
 
 	<ui:define name="corpo">
 
@@ -32,6 +31,11 @@
 								<p:password id="feedback" value="#{usuarioBean.usuario.senha}" />
 								<p:outputLabel value="E-mail:"></p:outputLabel>
 								<p:inputText value="#{usuarioBean.usuario.email}"></p:inputText>
+								<p:outputLabel for="perfil" value="Perfil:" />
+								<p:selectOneListbox id="perfil" value="#{usuarioBean.usuario.perfil}">
+									<f:selectItem itemLabel="Padrão" itemValue="0" />
+									<f:selectItem itemLabel="Administrador" itemValue="1" />
+								</p:selectOneListbox>
 								<p:commandButton value="Cadastrar"
 									action="#{usuarioBean.cadastrar}"></p:commandButton>
 							</h:panelGrid>
