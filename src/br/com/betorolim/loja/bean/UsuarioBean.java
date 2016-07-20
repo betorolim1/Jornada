@@ -19,9 +19,6 @@ public class UsuarioBean {
 
 	@Inject
 	private UsuarioDao dao;
-	
-	@Inject
-	private LoginBean loginBean;
 
 	public Usuario getUsuario() {
 		return usuario;
