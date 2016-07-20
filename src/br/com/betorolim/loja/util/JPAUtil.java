@@ -1,4 +1,4 @@
-package br.com.betorolim.loja.Util;
+package br.com.betorolim.loja.util;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;

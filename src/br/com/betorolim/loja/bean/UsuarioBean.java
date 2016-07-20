@@ -1,4 +1,4 @@
-package br.com.betorolim.loja.Bean;
+package br.com.betorolim.loja.bean;
 import java.io.IOException;
 
 
@@ -9,8 +9,8 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.persistence.PersistenceException;
 
-import br.com.betorolim.loja.Dao.UsuarioDao;
-import br.com.betorolim.loja.Modelo.Usuario;
+import br.com.betorolim.loja.dao.UsuarioDao;
+import br.com.betorolim.loja.modelo.Usuario;
 
 //@Model //@RequestScoped e @Named
 @ManagedBean

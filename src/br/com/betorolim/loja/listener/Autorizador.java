@@ -7,7 +7,7 @@ import javax.faces.event.PhaseId;
 import javax.faces.event.PhaseListener;
 import javax.inject.Inject;
 
-import br.com.betorolim.loja.Bean.UsuarioBean;
+import br.com.betorolim.loja.bean.UsuarioBean;
 
 public class Autorizador implements PhaseListener {
 

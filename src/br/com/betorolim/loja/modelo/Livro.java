@@ -1,4 +1,4 @@
-package br.com.betorolim.loja.Modelo;
+package br.com.betorolim.loja.modelo;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

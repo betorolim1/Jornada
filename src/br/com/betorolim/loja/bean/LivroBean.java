@@ -1,4 +1,4 @@
-package br.com.betorolim.loja.Bean;
+package br.com.betorolim.loja.bean;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -12,8 +12,8 @@ import javax.inject.Inject;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 
-import br.com.betorolim.loja.Dao.LivroDao;
-import br.com.betorolim.loja.Modelo.Livro;
+import br.com.betorolim.loja.dao.LivroDao;
+import br.com.betorolim.loja.modelo.Livro;
 
 @ManagedBean
 @ViewScoped

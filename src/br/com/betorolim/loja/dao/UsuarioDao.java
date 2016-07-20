@@ -1,4 +1,4 @@
-package br.com.betorolim.loja.Dao;
+package br.com.betorolim.loja.dao;
 
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
@@ -6,7 +6,7 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import br.com.betorolim.loja.Modelo.Usuario;
+import br.com.betorolim.loja.modelo.Usuario;
 
 @Named
 @Dependent
