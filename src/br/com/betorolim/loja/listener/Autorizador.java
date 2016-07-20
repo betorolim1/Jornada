@@ -28,7 +28,6 @@ public class Autorizador implements PhaseListener {
 		
 		if("/admin.xhtml".equals(context.getViewRoot().getViewId())){
 			
-			System.out.println(loginBean.getUsuario().getPerfil());
 			if(loginBean.getUsuario().getPerfil() == 0){
 				NavigationHandler handler = context.getApplication().getNavigationHandler();
 				handler.handleNavigation(context, null, "principal?faces-redirect=true");
