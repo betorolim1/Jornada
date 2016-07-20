@@ -23,22 +23,26 @@
 
 				<p:menubar styleClass="col-xs-12 col-sm-12 col-md-12">
 					<p:submenu label="Livros" icon="ui-icon-bookmark">
-						<p:menuitem value="Cadastrar" url="cadastroLivro.xhtml"/>
-						<p:menuitem value="Atualizar/Remover" action="#{usuarioBean.isLogado}" />
+						<p:menuitem value="Cadastrar" url="cadastroLivro.xhtml" />
+						<p:menuitem value="Atualizar/Remover"
+							action="#{usuarioBean.isLogado}" />
 					</p:submenu>
 
 					<p:submenu label="Cupons" icon="ui-icon-document-b">
-						<p:menuitem value="Cadastrar" url="cadastroCupom.xhtml"/>
-						<p:menuitem value="Atualizar/Remover" action="#{usuarioBean.isLogado}" />
+						<p:menuitem value="Cadastrar" url="cadastroCupom.xhtml" />
+						<p:menuitem value="Atualizar/Remover"
+							action="#{usuarioBean.isLogado}" />
 					</p:submenu>
-					
+
 					<p:submenu label="Usuarios" icon="ui-icon-person">
-						<p:menuitem value="Cadastrar administrador" action="#{usuarioBean.login}"/>
-						<p:menuitem value="Atualizar/Remover" action="#{usuarioBean.isLogado}" />
+						<p:menuitem value="Cadastrar administrador"
+							action="#{usuarioBean.login}" />
+						<p:menuitem value="Atualizar/Remover"
+							action="#{usuarioBean.isLogado}" />
 					</p:submenu>
 
 					<p:menuitem value="Logout" action="#{usuarioBean.menuLogout}"
-						icon="ui-icon-close" update="growl"/>
+						icon="ui-icon-close" update="growl" />
 
 				</p:menubar>
 			</h:form>

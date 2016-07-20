@@ -32,7 +32,8 @@
 								<p:outputLabel value="E-mail:"></p:outputLabel>
 								<p:inputText value="#{usuarioBean.usuario.email}"></p:inputText>
 								<p:outputLabel for="perfil" value="Perfil:" />
-								<p:selectOneListbox id="perfil" value="#{usuarioBean.usuario.perfil}">
+								<p:selectOneListbox id="perfil"
+									value="#{usuarioBean.usuario.perfil}">
 									<f:selectItem itemLabel="Padrão" itemValue="0" />
 									<f:selectItem itemLabel="Administrador" itemValue="1" />
 								</p:selectOneListbox>
