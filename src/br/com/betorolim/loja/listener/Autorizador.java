@@ -7,12 +7,13 @@ import javax.faces.event.PhaseId;
 import javax.faces.event.PhaseListener;
 import javax.inject.Inject;
 
+import br.com.betorolim.loja.bean.LoginBean;
 import br.com.betorolim.loja.bean.UsuarioBean;
 
 public class Autorizador implements PhaseListener {
 
 	@Inject
-	private UsuarioBean loginBean;
+	private LoginBean loginBean;
 	
 	/**
 	 * 
@@ -25,7 +26,7 @@ public class Autorizador implements PhaseListener {
 		FacesContext context = event.getFacesContext();
 
 		
-		/*if("/admin.xhtml".equals(context.getViewRoot().getViewId())){
+		if("/admin.xhtml".equals(context.getViewRoot().getViewId())){
 			
 			System.out.println(loginBean.getUsuario().getPerfil());
 			if(loginBean.getUsuario().getPerfil() == 0){
@@ -36,7 +37,7 @@ public class Autorizador implements PhaseListener {
 			}else{
 				return;
 			}
-		}*/
+		}
 		
 	}
 
