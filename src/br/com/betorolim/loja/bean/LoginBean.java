@@ -1,6 +1,8 @@
 package br.com.betorolim.loja.bean;
 
 import java.io.IOException;
+import java.io.Serializable;
+
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -8,12 +10,18 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
+
 import br.com.betorolim.loja.dao.UsuarioDao;
 import br.com.betorolim.loja.modelo.Usuario;
 
 @ManagedBean
 @SessionScoped
-public class LoginBean {
+public class LoginBean implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Inject
 	private Usuario usuario;
@@ -38,9 +46,8 @@ public class LoginBean {
 	}
 	
 	public void login() throws IOException {
-		boolean login = dao.existe(usuario);
-		System.out.println(login);
-		if (login == true) {
+		Usuario encontrado = dao.buscaUsuario(usuario);
+		if (encontrado != null) {
 			FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,

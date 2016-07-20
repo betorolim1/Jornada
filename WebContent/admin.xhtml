@@ -35,10 +35,8 @@
 					</p:submenu>
 
 					<p:submenu label="Usuarios" icon="ui-icon-person">
-						<p:menuitem value="Cadastrar administrador"
-							action="#{usuarioBean.login}" />
 						<p:menuitem value="Atualizar/Remover"
-							action="#{usuarioBean.isLogado}" />
+							url="gerenciaUsuarios.xhtml" />
 					</p:submenu>
 
 					<p:menuitem value="Logout" action="#{usuarioBean.menuLogout}"

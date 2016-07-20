@@ -27,7 +27,7 @@ public class Autorizador implements PhaseListener {
 		FacesContext context = event.getFacesContext();
 
 		
-		if("/admin.xhtml".equals(context.getViewRoot().getViewId())){
+		/*if("/admin.xhtml".equals(context.getViewRoot().getViewId())){
 			System.out.println(usuarioBean.getUsuario().getPerfil());
 			if(usuarioBean.getUsuario().getPerfil() == 0){
 				NavigationHandler handler = context.getApplication().getNavigationHandler();
@@ -37,7 +37,7 @@ public class Autorizador implements PhaseListener {
 			}else{
 				return;
 			}
-		}
+		}*/
 		
 	}
 

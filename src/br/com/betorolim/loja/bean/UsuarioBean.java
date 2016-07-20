@@ -1,12 +1,15 @@
 package br.com.betorolim.loja.bean;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.enterprise.inject.Model;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.persistence.PersistenceException;
+
+import org.primefaces.event.RowEditEvent;
 
 import br.com.betorolim.loja.dao.UsuarioDao;
 import br.com.betorolim.loja.modelo.Usuario;
@@ -16,6 +19,8 @@ import br.com.betorolim.loja.modelo.Usuario;
 public class UsuarioBean {
 
 	private Usuario usuario = new Usuario();
+	
+	private List<Usuario> usuarios;
 
 	@Inject
 	private UsuarioDao dao;
@@ -47,5 +52,36 @@ public class UsuarioBean {
 					new FacesMessage(FacesMessage.SEVERITY_FATAL, "Não autorizado", null));
 		}
 	}
+	
+	public List<Usuario> getUsuarios() {
+		if (usuarios == null) {
+			usuarios = dao.listaTodos();
+		}
+		return usuarios;
+	}
+	
+	public void editaLinha(RowEditEvent event) throws IOException {
+		usuario = (Usuario) event.getObject();
+		if (!dao.existePorNome(usuario)) {
+			if (!dao.existePorEmail(usuario)) {
+				dao.atualiza(usuario);
+				FacesContext.getCurrentInstance().getExternalContext().redirect("gerenciaUsuarios.xhtml");
+			} else {
+				FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_FATAL, "E-mail ja utilizado", null));
+			}
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_FATAL, "Login ja utilizado", null));
+		}
+		
+        FacesMessage msg = new FacesMessage("Usuario atualizado", null);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+     
+    public void cancelaEdicao(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Edição cancelada", null);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
 
 }
