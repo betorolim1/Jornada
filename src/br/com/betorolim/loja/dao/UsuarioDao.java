@@ -29,6 +29,13 @@ public class UsuarioDao {
 		return encontrado;
 	}
 	
+	public boolean existePorEmail(Usuario usuario) {
+		Query busca = manager.createQuery("select usuario from Usuario usuario where usuario.email = :email")
+				.setParameter("email", usuario.getEmail());
+		boolean encontrado = !busca.getResultList().isEmpty();
+		return encontrado;
+	}
+	
 	public boolean existe(Usuario usuario) {
 		Query busca = manager.createQuery("select usuario from Usuario usuario where usuario.login = :login"
 				+ " and usuario.senha = :senha").setParameter("login", usuario.getLogin())
