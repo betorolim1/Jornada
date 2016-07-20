@@ -1,5 +1,6 @@
 package br.com.betorolim.loja.dao;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.enterprise.context.Dependent;
@@ -13,8 +14,13 @@ import br.com.betorolim.loja.modelo.Usuario;
 
 @Named
 @Dependent
-public class UsuarioDao {
+public class UsuarioDao implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	@Inject
 	private EntityManager manager;
 
