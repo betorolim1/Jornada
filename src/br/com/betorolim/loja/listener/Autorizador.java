@@ -14,20 +14,29 @@ public class Autorizador implements PhaseListener {
 	@Inject
 	private UsuarioBean usuarioBean;
 	
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	@Override
 	public void afterPhase(PhaseEvent event) {
 		// TODO Auto-generated method stub
 		FacesContext context = event.getFacesContext();
+
 		
-		if("/index.xhtml".equals(context.getViewRoot().getViewId())){
-			return;
-		}
-		
-		if(!usuarioBean.isLogado()){
-			NavigationHandler handler = context.getApplication().getNavigationHandler();
-			handler.handleNavigation(context, null, "login?faces-redirect=true");
-			
-			context.renderResponse();
+		if("/admin.xhtml".equals(context.getViewRoot().getViewId())){
+			System.out.println(usuarioBean.getUsuario().getPerfil());
+			if(usuarioBean.getUsuario().getPerfil() == 0){
+				NavigationHandler handler = context.getApplication().getNavigationHandler();
+				handler.handleNavigation(context, null, "principal?faces-redirect=true");
+				
+				context.renderResponse();
+			}else{
+				return;
+			}
 		}
 		
 	}

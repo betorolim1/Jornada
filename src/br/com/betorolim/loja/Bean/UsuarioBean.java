@@ -18,7 +18,7 @@ import br.com.betorolim.loja.Modelo.Usuario;
 public class UsuarioBean {
 	
 	private Usuario usuario = new Usuario();
-	
+
 	@Inject
 	private UsuarioDao dao;
 	
