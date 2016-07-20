@@ -46,6 +46,7 @@ public class LoginBean implements Serializable {
 	public void login() throws IOException {
 		Usuario encontrado = dao.buscaUsuario(usuario);
 		if (encontrado != null) {
+			this.usuario = encontrado;
 			FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,
