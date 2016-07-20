@@ -21,11 +21,11 @@
 
 					<p:megaMenu style="margin-top:20px;"
 						styleClass="col-xs-12 col-sm-12 col-md-12">
-						<p:menuitem value="Login" action="#{usuarioBean.menuLogin}"
+						<p:menuitem value="Login" action="#{loginBean.menuLogin}"
 							icon="ui-icon-check" update="growl" />
-						<p:menuitem value="Carrinho" action="#{usuarioBean.menuCarrinho}"
+						<p:menuitem value="Carrinho" action="#{loginBean.menuCarrinho}"
 							icon="ui-icon-cart" update="growl" />
-						<p:menuitem value="Logout" action="#{usuarioBean.menuLogout}"
+						<p:menuitem value="Logout" action="#{loginBean.menuLogout}"
 							icon="ui-icon-close" update="growl" />
 					</p:megaMenu>
 				</h:panelGrid>
@@ -41,7 +41,7 @@
 					<div class="col-lg-12">
 						<hr></hr>
 						<h2 class="intro-text text-center">Seja bem vindo(a)
-							#{usuarioBean.usuario.login}</h2>
+							#{loginBean.usuario.login}</h2>
 						<hr></hr>
 					</div>
 					<div class="col-lg-12 text-center">

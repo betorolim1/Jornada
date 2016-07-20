@@ -24,12 +24,12 @@
 						<h:form>
 							<h:panelGrid id="grid" columns="2" cellpadding="5">
 								<p:outputLabel value="Login:"></p:outputLabel>
-								<p:inputText value="#{usuarioBean.usuario.login}"
+								<p:inputText value="#{loginBean.usuario.login}"
 									required="true" />
 								<p:outputLabel value="Senha:"></p:outputLabel>
-								<p:password id="feedback" value="#{usuarioBean.usuario.senha}"
+								<p:password id="feedback" value="#{loginBean.usuario.senha}"
 									required="true" />
-								<p:commandButton value="Login" action="#{usuarioBean.login}"
+								<p:commandButton value="Login" action="#{loginBean.login}"
 									update="grid"></p:commandButton>
 							</h:panelGrid>
 						</h:form>
