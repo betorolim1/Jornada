@@ -15,7 +15,7 @@ public class Livro {
 	private Long id;
 	@NotEmpty(message="Titulo não deve ser vazio")
 	private String titulo;
-	private String capa;
+	private String capa = "a";
 	@NotEmpty(message="Autor não deve ser vazio")
 	private String autor;
 	@NotEmpty(message="Descricao não deve ser vazio")
