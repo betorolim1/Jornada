@@ -44,51 +44,37 @@
 							#{loginBean.usuario.login}</h2>
 						<hr></hr>
 					</div>
-					<div class="col-lg-12 text-center">
-						<img class="img-responsive img-border img-full"
-							src="img/slide-1.jpg" alt=""></img>
-						<h2>
-							Post Title <br /> <small>October 13, 2013</small>
-						</h2>
-						<p>Lid est laborum dolo rumes fugats untras. Etharums ser
-							quidem rerum facilis dolores nemis omnis fugats vitaes nemo
-							minima rerums unsers sadips amets. Sed ut perspiciatis unde omnis
-							iste natus error sit voluptatem accusantium doloremque
-							laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
-							veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-						<a href="#" class="btn btn-default btn-lg">Read More</a>
-						<hr />
-					</div>
-					<div class="col-lg-12 text-center">
-						<img class="img-responsive img-border img-full"
-							src="img/slide-2.jpg" alt="alt"></img>
-						<h2>
-							Post Title <br></br> <small>October 13, 2013</small>
-						</h2>
-						<p>Lid est laborum dolo rumes fugats untras. Etharums ser
-							quidem rerum facilis dolores nemis omnis fugats vitaes nemo
-							minima rerums unsers sadips amets. Sed ut perspiciatis unde omnis
-							iste natus error sit voluptatem accusantium doloremque
-							laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
-							veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-						<a href="#" class="btn btn-default btn-lg">Read More</a>
-						<hr></hr>
-					</div>
-					<div class="col-lg-12 text-center">
-						<img class="img-responsive img-border img-full"
-							src="img/slide-3.jpg" alt=""></img>
-						<h2>
-							Post Title <br></br> <small>October 13, 2013</small>
-						</h2>
-						<p>Lid est laborum dolo rumes fugats untras. Etharums ser
-							quidem rerum facilis dolores nemis omnis fugats vitaes nemo
-							minima rerums unsers sadips amets. Sed ut perspiciatis unde omnis
-							iste natus error sit voluptatem accusantium doloremque
-							laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
-							veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-						<a href="#" class="btn btn-default btn-lg">Read More</a>
-						<hr></hr>
-					</div>
+					<br></br>
+					<h:form id="form" styleClass="listaLivros">
+						<p:carousel value="#{livroBean.livros}" headerText="Livros"
+							var="livro" itemStyle="text-align:center" responsive="true">
+							<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
+								columnClasses="label,value" layout="grid"
+								styleClass="ui-panelgrid-blank">
+								<f:facet name="header">
+									<p:graphicImage name="#{livro.capa}" />
+								</f:facet>
+
+								<h:outputText value="Titulo:" />
+								<h:outputText value="#{livro.titulo}" />
+
+								<h:outputText value="Autor:" />
+								<h:outputText value="#{livro.autor}" />
+
+								<h:outputText value="Descrição:" />
+								<h:outputText value="#{livro.descricao}" />
+								
+								<h:outputText value="Preço Ebook:" />
+								<h:outputText value="#{livro.precoEbook}" />
+								
+								<h:outputText value="Preço Impresso:" />
+								<h:outputText value="#{livro.precoImpresso}" />
+								
+								<h:outputText value="Preço Combo:" />
+								<h:outputText value="#{livro.precoCombo}" />
+							</p:panelGrid>
+						</p:carousel>
+					</h:form>
 				</div>
 			</div>
 
