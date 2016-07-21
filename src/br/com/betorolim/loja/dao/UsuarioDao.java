@@ -71,4 +71,10 @@ public class UsuarioDao implements Serializable {
 		manager.getTransaction().commit();
 	}
 
+	public void remove(Usuario usuario) {
+		manager.getTransaction().begin();
+		this.manager.remove(usuario);
+		manager.getTransaction().commit();
+	}
+
 }

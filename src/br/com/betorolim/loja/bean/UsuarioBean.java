@@ -60,25 +60,29 @@ public class UsuarioBean {
 		return usuarios;
 	}
 	
+	public void remove(Usuario usuario) {
+		dao.remove(usuario);
+		this.usuarios = dao.listaTodos();
+	}
+	
 	public void editaLinha(RowEditEvent event) throws IOException {
 		usuario = (Usuario) event.getObject();
-		String loginAntigo = usuario.getLogin();
-		String emailAntigo = usuario.getEmail();
-		int perfilAntigo = usuario.getPerfil();
 		if (!dao.existePorNome(usuario)) {
-			if (!dao.existePorEmail(usuario)) {
-				dao.atualiza(usuario);
-				FacesContext.getCurrentInstance().getExternalContext().redirect("gerenciaUsuarios.xhtml");
-				FacesMessage msg = new FacesMessage("Usuario atualizado", null);
-		        FacesContext.getCurrentInstance().addMessage(null, msg);
+	
 			} else {
 				FacesContext.getCurrentInstance().addMessage(null,
-						new FacesMessage(FacesMessage.SEVERITY_FATAL, "E-mail ja utilizado", null));
+						new FacesMessage(FacesMessage.SEVERITY_INFO, "E-mail ja utilizado", null));
 			}
+		if (!dao.existePorEmail(usuario)) {
+			
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_FATAL, "Login ja utilizado", null));
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Login ja utilizado", null));
 		}
+		FacesMessage msg = new FacesMessage("Usuario atualizado", null);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+		dao.atualiza(usuario);
+        usuarios = dao.listaTodos();
     }
      
     public void cancelaEdicao(RowEditEvent event) {
