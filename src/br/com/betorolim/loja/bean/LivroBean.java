@@ -49,7 +49,7 @@ public class LivroBean implements Serializable {
 	
 	public String cadastrar() {
 		dao.adiciona(livro);
-		return "principal?faces-redirect=true";
+		return "admin?faces-redirect=true";
 	}
 	
 	public void fileUpload(FileUploadEvent event){
