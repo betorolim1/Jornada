@@ -5,20 +5,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 public class Livro {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@NotNull
+	@NotEmpty(message="Titulo não deve ser vazio")
 	private String titulo;
 	private String capa;
-	@NotNull
+	@NotEmpty(message="Autor não deve ser vazio")
 	private String autor;
-	@NotNull
+	@NotEmpty(message="Descricao não deve ser vazio")
 	private String descricao;
-	@NotNull
+	@NotNull(message="Preco não deve ser vazio")
 	private double precoEbook;
 	@NotNull
 	private double precoImpresso;
