@@ -73,15 +73,13 @@ public class UsuarioBean {
 		usuario = (Usuario) event.getObject();
 		if (!dao.existePorNome(usuario)) {
 	
-			} else {
 				FacesContext.getCurrentInstance().addMessage(null,
-						new FacesMessage(FacesMessage.SEVERITY_INFO, "E-mail ja utilizado", null));
+						new FacesMessage(FacesMessage.SEVERITY_WARN, "E-mail ja utilizado", null));
 			}
 		if (!dao.existePorEmail(usuario)) {
-			
-		} else {
+
 			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_INFO, "Login ja utilizado", null));
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "Login ja utilizado", null));
 		}
 		FacesMessage msg = new FacesMessage("Usuario atualizado", null);
         FacesContext.getCurrentInstance().addMessage(null, msg);
