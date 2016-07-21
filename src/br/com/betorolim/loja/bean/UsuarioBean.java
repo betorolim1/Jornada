@@ -24,6 +24,9 @@ public class UsuarioBean {
 
 	@Inject
 	private UsuarioDao dao;
+	
+	@Inject
+	private LoginBean loginBean;
 
 	public Usuario getUsuario() {
 		return usuario;
@@ -37,8 +40,9 @@ public class UsuarioBean {
 		try {
 			if (!dao.existePorNome(usuario)) {
 				if (!dao.existePorEmail(usuario)) {
+					loginBean.setUsuario(usuario);
 					dao.adiciona(usuario);
-					FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+					FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
 				} else {
 					FacesContext.getCurrentInstance().addMessage(null,
 							new FacesMessage(FacesMessage.SEVERITY_FATAL, "E-mail ja utilizado", null));
@@ -89,5 +93,13 @@ public class UsuarioBean {
         FacesMessage msg = new FacesMessage("Edição cancelada", null);
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
+
+	public LoginBean getLoginBean() {
+		return loginBean;
+	}
+
+	public void setLoginBean(LoginBean loginBean) {
+		this.loginBean = loginBean;
+	}
 
 }

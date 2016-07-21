@@ -8,7 +8,6 @@ import javax.faces.event.PhaseListener;
 import javax.inject.Inject;
 
 import br.com.betorolim.loja.bean.LoginBean;
-import br.com.betorolim.loja.bean.UsuarioBean;
 
 public class Autorizador implements PhaseListener {
 
