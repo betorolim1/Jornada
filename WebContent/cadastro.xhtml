@@ -42,8 +42,7 @@
 									<f:selectItem itemLabel="Administrador" itemValue="1"/>
 								</p:selectOneListbox>-->
 								<p:selectOneListbox value="#{usuarioBean.usuario.perfil}">
-									<f:selectItem itemLabel="Padrão" itemValue="0" />
-									<f:selectItem itemLabel="Administrador" itemValue="1" />
+									<f:selectItems value="#{usuarioBean.perfil}" var="tipo" itemValue="#{tipo}" />
 								</p:selectOneListbox>
 								<p:commandButton value="Cadastrar"
 									action="#{usuarioBean.cadastrar}"></p:commandButton>

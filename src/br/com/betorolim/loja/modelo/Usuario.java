@@ -28,7 +28,7 @@ public class Usuario implements Serializable {
 	@Email
 	@NotEmpty(message="Não deve ser vazio")
 	private String email;
-	private int perfil;
+	private Perfil perfil;
 	
 	public Long getId() {
 		return id;
@@ -48,17 +48,17 @@ public class Usuario implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getPerfil() {
-		return perfil;
-	}
-	public void setPerfil(int perfil) {
-		this.perfil = perfil;
-	}
 	public String getLogin() {
 		return login;
 	}
 	public void setLogin(String nome) {
 		this.login = nome;
+	}
+	public Perfil getPerfil() {
+		return perfil;
+	}
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
 	}
 
 }

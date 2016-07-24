@@ -53,7 +53,10 @@
 										<h:outputText value="#{usuarios.perfil}" />
 									</f:facet>
 									<f:facet name="input">
-										<p:inputText value="#{usuarios.perfil}" style="width:100%" />
+										<p:selectOneListbox value="#{usuarioBean.usuario.perfil}">
+											<f:selectItems value="#{usuarioBean.perfil}" var="tipo"
+												itemValue="#{tipo}" />
+										</p:selectOneListbox>
 									</f:facet>
 								</p:cellEditor>
 							</p:column>

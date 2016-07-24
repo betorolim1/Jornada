@@ -8,6 +8,7 @@ import javax.faces.event.PhaseListener;
 import javax.inject.Inject;
 
 import br.com.betorolim.loja.bean.LoginBean;
+import br.com.betorolim.loja.modelo.Perfil;
 
 public class Autorizador implements PhaseListener {
 
@@ -29,7 +30,7 @@ public class Autorizador implements PhaseListener {
 				|| "/gerenciaLivros.xhtml".equals(context.getViewRoot().getViewId())
 				|| "/gerenciaUsuarios.xhtml".equals(context.getViewRoot().getViewId())) {
 
-			if (loginBean.getUsuario().getPerfil() == 0) {
+			if (loginBean.getUsuario().getPerfil() == Perfil.Padrao || loginBean.getUsuario().getPerfil() == null) {
 				NavigationHandler handler = context.getApplication().getNavigationHandler();
 				handler.handleNavigation(context, null, "principal?faces-redirect=true");
 

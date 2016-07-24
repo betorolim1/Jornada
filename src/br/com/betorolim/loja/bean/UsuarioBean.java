@@ -12,6 +12,7 @@ import javax.persistence.PersistenceException;
 import org.primefaces.event.RowEditEvent;
 
 import br.com.betorolim.loja.dao.UsuarioDao;
+import br.com.betorolim.loja.modelo.Perfil;
 import br.com.betorolim.loja.modelo.Usuario;
 
 //@Model //@RequestScoped e @Named
@@ -100,5 +101,9 @@ public class UsuarioBean {
 	public void setLoginBean(LoginBean loginBean) {
 		this.loginBean = loginBean;
 	}
+	
+	public Perfil[] getPerfil(){
+        return Perfil.values();
+    } 
 
 }
