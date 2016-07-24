@@ -24,8 +24,7 @@
 				<p:menubar styleClass="col-xs-12 col-sm-12 col-md-12">
 					<p:submenu label="Livros" icon="ui-icon-bookmark">
 						<p:menuitem value="Cadastrar" url="cadastroLivro.xhtml" />
-						<p:menuitem value="Atualizar/Remover"
-							url="gerenciaLivros.xhtml" />
+						<p:menuitem value="Atualizar/Remover" url="gerenciaLivros.xhtml" />
 					</p:submenu>
 
 					<p:submenu label="Cupons" icon="ui-icon-document-b">
@@ -35,8 +34,8 @@
 					</p:submenu>
 
 					<p:submenu label="Usuarios" icon="ui-icon-person">
-						<p:menuitem value="Atualizar/Remover"
-							url="gerenciaUsuarios.xhtml" />
+						<p:menuitem value="Cadastrar usuario(padrão/administrador)" url="cadastro.xhtml" />
+						<p:menuitem value="Atualizar/Remover" url="gerenciaUsuarios.xhtml" />
 					</p:submenu>
 
 					<p:menuitem value="Logout" action="#{loginBean.menuLogout}"
