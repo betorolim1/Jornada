@@ -13,36 +13,38 @@ public class Autorizador implements PhaseListener {
 
 	@Inject
 	private LoginBean loginBean;
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Override
 	public void afterPhase(PhaseEvent event) {
 		// TODO Auto-generated method stub
 		FacesContext context = event.getFacesContext();
 
-		
-		if("/admin.xhtml".equals(context.getViewRoot().getViewId())){
-			
-			if(loginBean.getUsuario().getPerfil() == 0){
+		if ("/admin.xhtml".equals(context.getViewRoot().getViewId())
+				|| "/cadastroLivro.xhtml".equals(context.getViewRoot().getViewId())
+				|| "/gerenciaLivros.xhtml".equals(context.getViewRoot().getViewId())
+				|| "/gerenciaUsuarios.xhtml".equals(context.getViewRoot().getViewId())) {
+
+			if (loginBean.getUsuario().getPerfil() == 0) {
 				NavigationHandler handler = context.getApplication().getNavigationHandler();
 				handler.handleNavigation(context, null, "principal?faces-redirect=true");
-				
+
 				context.renderResponse();
-			}else{
+			} else {
 				return;
 			}
 		}
-		
+
 	}
 
 	@Override
 	public void beforePhase(PhaseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
