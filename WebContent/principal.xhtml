@@ -52,7 +52,7 @@
 								columnClasses="label,value" layout="grid"
 								styleClass="ui-panelgrid-blank">
 								<f:facet name="header">
-									<p:graphicImage name="#{livro.capa}" />
+									<h:graphicImage name="img/#{livro.capa}" styleClass="imagemPagPrincipal"/>
 								</f:facet>
 
 								<h:outputText value="Titulo:" />
@@ -63,13 +63,13 @@
 
 								<h:outputText value="Descrição:" />
 								<h:outputText value="#{livro.descricao}" />
-								
+
 								<h:outputText value="Preço Ebook:" />
 								<h:outputText value="#{livro.precoEbook}" />
-								
+
 								<h:outputText value="Preço Impresso:" />
 								<h:outputText value="#{livro.precoImpresso}" />
-								
+
 								<h:outputText value="Preço Combo:" />
 								<h:outputText value="#{livro.precoCombo}" />
 							</p:panelGrid>

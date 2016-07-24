@@ -15,12 +15,12 @@ public class Livro {
 	private Long id;
 	@NotEmpty(message="Titulo não deve ser vazio")
 	private String titulo;
-	private String capa = "C:\\var\\bittar.png";
+	private String capa;
 	@NotEmpty(message="Autor não deve ser vazio")
 	private String autor;
 	@NotEmpty(message="Descricao não deve ser vazio")
 	private String descricao;
-	@NotNull(message="Preco não deve ser vazio")
+	@NotNull
 	private double precoEbook;
 	@NotNull
 	private double precoImpresso;

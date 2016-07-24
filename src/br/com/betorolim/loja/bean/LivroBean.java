@@ -58,8 +58,7 @@ public class LivroBean implements Serializable {
 			UploadedFile arq = event.getFile();
 			
 			 InputStream in = new BufferedInputStream(arq.getInputstream());
-			 File file = new File("C:\\var\\" + arq.getFileName());
-			 String caminho = file.getAbsolutePath();
+			 File file = new File("C:\\Users\\Adalberto\\workspace\\Livraria\\WebContent\\resources\\img\\" + arq.getFileName());
 			 FileOutputStream fout = new FileOutputStream(file);
 			 while(in.available() != 0)
 			 {
@@ -67,7 +66,7 @@ public class LivroBean implements Serializable {
 			 }
 			 fout.close();
 			 
-			 this.livro.setCapa(caminho);
+			 this.livro.setCapa(arq.getFileName());
 			 System.out.println(livro.getCapa());
 			
 		}catch(Exception ex){

@@ -5,6 +5,10 @@
 	z-index: 100;
 }
 
+.imagemPagPrincipal{
+	width: 150px;
+}
+
 .menuAdmin{
 	height: 200px;
 }
