@@ -22,11 +22,11 @@
 					<p:megaMenu style="margin-top:20px;"
 						styleClass="col-xs-12 col-sm-12 col-md-12">
 						<p:menuitem value="Login" action="#{loginBean.menuLogin}"
-							icon="ui-icon-check" update="growl" />
+							icon="ui-icon-check" update="growl" rendered="#{loginBean.isLogado() == false}"/>
 						<p:menuitem value="Carrinho" action="#{loginBean.menuCarrinho}"
 							icon="ui-icon-cart" update="growl" />
 						<p:menuitem value="Logout" action="#{loginBean.menuLogout}"
-							icon="ui-icon-close" update="growl" />
+							icon="ui-icon-close" update="growl" rendered="#{loginBean.isLogado()}"/>
 					</p:megaMenu>
 				</h:panelGrid>
 
