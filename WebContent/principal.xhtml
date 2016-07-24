@@ -45,35 +45,70 @@
 						<hr></hr>
 					</div>
 					<br></br>
-					<h:form id="form" styleClass="listaLivros">
-						<p:carousel value="#{livroBean.livros}" headerText="Livros"
-							var="livro" itemStyle="text-align:center" responsive="true">
-							<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
-								columnClasses="label,value" layout="grid"
-								styleClass="ui-panelgrid-blank">
-								<f:facet name="header">
-									<h:graphicImage name="img/#{livro.capa}" styleClass="imagemPagPrincipal"/>
-								</f:facet>
 
-								<h:outputText value="Titulo:" />
-								<h:outputText value="#{livro.titulo}" />
 
-								<h:outputText value="Autor:" />
-								<h:outputText value="#{livro.autor}" />
+					<h:form id="form">
+						<p:dataGrid var="livro" value="#{livroBean.livros}" columns="3"
+							layout="grid" rows="12" paginator="true" id="livros"
+							paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+							rowsPerPageTemplate="6,12,16">
 
-								<h:outputText value="Descrição:" />
-								<h:outputText value="#{livro.descricao}" />
+							<f:facet name="header">
+            Livros
+        </f:facet>
 
-								<h:outputText value="Preço Ebook:" />
-								<h:outputText value="#{livro.precoEbook}" />
+							<p:panel header="#{livro.id}" style="text-align:center">
+								<h:panelGrid columns="1" style="width:100%">
+									<p:graphicImage name="img/bg.jpg"
+										styleClass="imagemPagPrincipal" />
 
-								<h:outputText value="Preço Impresso:" />
-								<h:outputText value="#{livro.precoImpresso}" />
+									<h:outputText value="#{livro.titulo}" />
 
-								<h:outputText value="Preço Combo:" />
-								<h:outputText value="#{livro.precoCombo}" />
-							</p:panelGrid>
-						</p:carousel>
+									<p:commandLink update=":form:livroDetail"
+										oncomplete="PF('livroDialog').show()" title="View Detail">
+										<h:outputText styleClass="ui-icon ui-icon-search"
+											style="margin:0 auto;" />
+										<f:setPropertyActionListener value="#{livro}"
+											target="#{livroBean.livroSelecionado}" />
+									</p:commandLink>
+								</h:panelGrid>
+							</p:panel>
+
+						</p:dataGrid>
+
+						<p:dialog header="Info Livro" widgetVar="livroDialog" modal="true"
+							showEffect="fade" hideEffect="fade" resizable="false">
+							<p:outputPanel id="livroDetail" style="text-align:center;">
+								<p:panelGrid columns="2"
+									rendered="#{not empty livroBean.livroSelecionado}"
+									columnClasses="label,value">
+									<f:facet name="header">
+										<p:graphicImage name="img/bg.jpg" />
+									</f:facet>
+
+									<h:outputText value="Id:" />
+									<h:outputText value="#{livroBean.livroSelecionado.id}" />
+
+									<h:outputText value="Titulo:" />
+									<h:outputText value="#{livroBean.livroSelecionado.titulo}" />
+
+									<h:outputText value="Autor:" />
+									<h:outputText value="#{livroBean.livroSelecionado.autor}" />
+
+									<h:outputText value="Descrição" />
+									<h:outputText value="#{livroBean.livroSelecionado.descricao}" />
+									
+									<h:outputText value="Preço Ebook" />
+									<h:outputText value="#{livroBean.livroSelecionado.precoEbook}" />
+									
+									<h:outputText value="Preço Impresso" />
+									<h:outputText value="#{livroBean.livroSelecionado.precoImpresso}" />
+									
+									<h:outputText value="Preço Combo" />
+									<h:outputText value="#{livroBean.livroSelecionado.precoCombo}" />
+								</p:panelGrid>
+							</p:outputPanel>
+						</p:dialog>
 					</h:form>
 				</div>
 			</div>

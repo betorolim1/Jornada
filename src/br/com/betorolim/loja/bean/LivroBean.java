@@ -34,6 +34,8 @@ public class LivroBean implements Serializable {
 	private Livro livro = new Livro();
 	
 	private List<Livro> livros;
+	
+	private Livro livroSelecionado;
 
 
 	@Inject
@@ -102,6 +104,14 @@ public class LivroBean implements Serializable {
     public void remove(Livro livro) {
 		dao.remove(livro);
 		livros = dao.listaTodos();
+	}
+
+	public Livro getLivroSelecionado() {
+		return livroSelecionado;
+	}
+
+	public void setLivroSelecionado(Livro livroSelecionado) {
+		this.livroSelecionado = livroSelecionado;
 	}
 	
 }
