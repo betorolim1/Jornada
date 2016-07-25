@@ -85,7 +85,6 @@ public class UsuarioBean {
 		FacesMessage msg = new FacesMessage("Usuario atualizado", null);
         FacesContext.getCurrentInstance().addMessage(null, msg);
 		dao.atualiza(usuario);
-        loginBean.setUsuario(usuario);
         usuarios = dao.listaTodos();
     }
      
