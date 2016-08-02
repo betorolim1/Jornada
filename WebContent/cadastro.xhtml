@@ -32,15 +32,6 @@
 								<p:outputLabel value="E-mail:"></p:outputLabel>
 								<p:inputText value="#{usuarioBean.usuario.email}"></p:inputText>
 								<p:outputLabel value="Perfil:" />
-								<!-- 								<p:selectOneListbox id="perfilPadrao" 
-									value="#{usuarioBean.usuario.perfil}" rendered="#{loginBean.usuario.perfil==0}">
-									<f:selectItem itemLabel="Padrão" itemValue="0" />
-								</p:selectOneListbox>
-								<p:selectOneListbox id="perfilPadrao_Admin"
-									value="#{usuarioBean.usuario.perfil}" rendered="#{loginBean.usuario.perfil==1}">
-									<f:selectItem itemLabel="Padrão" itemValue="0" />
-									<f:selectItem itemLabel="Administrador" itemValue="1"/>
-								</p:selectOneListbox>-->
 								<p:selectOneListbox value="#{usuarioBean.usuario.perfil}">
 									<f:selectItems value="#{usuarioBean.perfil}" var="tipo" itemValue="#{tipo}" />
 								</p:selectOneListbox>
