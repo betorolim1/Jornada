@@ -1,6 +1,7 @@
 package br.com.betorolim.loja.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -20,6 +21,8 @@ public class CupomBean implements Serializable {
 	
 	private Cupom cupom = new Cupom();
 	
+	private List<Cupom> cupons;
+	
 	@Inject
 	private CupomDao dao;
 
@@ -34,6 +37,22 @@ public class CupomBean implements Serializable {
 	public String cadastrar() {
 		dao.adiciona(cupom);
 		return "admin?faces-redirect=true";
+	}
+
+	public List<Cupom> getCupons() {
+		if(cupons == null){
+			cupons = dao.listaTodos();
+		}
+		return cupons;
+	}
+
+	public void setCupons(List<Cupom> cupons) {
+		this.cupons = cupons;
+	}
+	
+	public void remove(Cupom cupom) {
+		dao.remove(cupom);
+		cupons = dao.listaTodos();
 	}
 
 }

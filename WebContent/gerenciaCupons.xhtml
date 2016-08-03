@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets" template="_template.xhtml">
+
+	<ui:define name="corpo">
+
+		<div class="container">
+
+			<div class="row">
+				<div class="box">
+
+					<h:form id="form">
+						<p:growl id="msgs" showDetail="false" />
+
+						<p:dataTable var="cupons" value="#{cupomBean.cupons}"
+							paginator="true" rows="5" lazy="true" editable="true">
+
+							<p:ajax event="rowEdit" listener="#{cupomBean.editaLinha}"
+								update=":form:msgs" />
+							<p:ajax event="rowEditCancel"
+								listener="#{cupomBean.cancelaEdicao}" update=":form:msgs" />
+
+							<p:column headerText="Id">
+								<h:outputText value="#{cupons.id}"></h:outputText>
+							</p:column>
+							<p:column headerText="Data de Vencimento">
+								<p:cellEditor>
+									<f:facet name="output">
+										<h:outputText value="#{cupons.dataValidade}" />
+									</f:facet>
+									<f:facet name="input">
+										<p:inputText value="#{cupons.dataValidade}" style="width:100%"
+											id="modelInput" />
+									</f:facet>
+								</p:cellEditor>
+							</p:column>
+							<p:column headerText="Desconto (%)">
+								<p:cellEditor>
+									<f:facet name="output">
+										<h:outputText value="#{cupons.desconto}" />
+									</f:facet>
+									<f:facet name="input">
+										<p:inputText value="#{cupons.desconto}" style="width:100%"
+											 />
+									</f:facet>
+								</p:cellEditor>
+							</p:column>
+							<p:column style="width:32px">
+								<p:rowEditor />
+							</p:column>
+							<p:column>
+								<f:facet name="header">Ação</f:facet>
+								<h:commandLink action="#{cupomBean.remove(cupons)}"
+									value="Remover">
+									<f:ajax render="@form"></f:ajax>
+								</h:commandLink>
+							</p:column>
+						</p:dataTable>
+					</h:form>
+				</div>
+			</div>
+
+		</div>
+	</ui:define>
+
+</ui:decorate>
