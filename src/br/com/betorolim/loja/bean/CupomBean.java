@@ -2,6 +2,7 @@ package br.com.betorolim.loja.bean;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -24,11 +25,11 @@ public class CupomBean implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private Cupom cupom = new Cupom();
-	
+
 	private List<Cupom> cupons;
-	
+
 	@Inject
 	private CupomDao dao;
 
@@ -39,14 +40,21 @@ public class CupomBean implements Serializable {
 	public void setCupom(Cupom cupom) {
 		this.cupom = cupom;
 	}
-	
+
 	public String cadastrar() {
-		dao.adiciona(cupom);
-		return "admin?faces-redirect=true";
+		if (verificaData(cupom) == true) {
+			dao.adiciona(cupom);
+			return "admin?faces-redirect=true";
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_FATAL, "Data anterior ao dia atual", null));
+			return null;
+		}
+
 	}
 
 	public List<Cupom> getCupons() {
-		if(cupons == null){
+		if (cupons == null) {
 			cupons = dao.listaTodos();
 		}
 		return cupons;
@@ -55,24 +63,33 @@ public class CupomBean implements Serializable {
 	public void setCupons(List<Cupom> cupons) {
 		this.cupons = cupons;
 	}
-	
+
 	public void remove(Cupom cupom) {
 		dao.remove(cupom);
 		cupons = dao.listaTodos();
 	}
-	
+
+	public boolean verificaData(Cupom cupom) {
+		Date dataAtual = new Date(System.currentTimeMillis());
+		return dataAtual.before(cupom.getDataValidade());
+	}
+
 	public void editaLinha(RowEditEvent event) throws IOException {
 		cupom = (Cupom) event.getObject();
+		if (verificaData(cupom) == true) {
+			FacesMessage msg = new FacesMessage("Cupom atualizado", null);
+			FacesContext.getCurrentInstance().addMessage(null, msg);
+			dao.atualiza(cupom);
+			cupons = dao.listaTodos();
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_FATAL, "Data anterior ao dia atual", null));
+		}
+	}
 
-		FacesMessage msg = new FacesMessage("Livro atualizado", null);
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-		dao.atualiza(cupom);
-        cupons = dao.listaTodos();
-    }
-     
-    public void cancelaEdicao(RowEditEvent event) {
-        FacesMessage msg = new FacesMessage("Edição cancelada", null);
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
+	public void cancelaEdicao(RowEditEvent event) {
+		FacesMessage msg = new FacesMessage("Edição cancelada", null);
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+	}
 
 }

@@ -29,4 +29,10 @@ public class CupomDao {
 		manager.getTransaction().commit();
 	}
 
+	public void atualiza(Cupom cupom) {
+		manager.getTransaction().begin();
+		manager.merge(cupom);
+		manager.getTransaction().commit();
+	}
+
 }

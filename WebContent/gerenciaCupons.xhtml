@@ -29,22 +29,26 @@
 							<p:column headerText="Data de Vencimento">
 								<p:cellEditor>
 									<f:facet name="output">
-										<h:outputText value="#{cupons.dataValidade}" />
+										<p:column headerText="Data de Validade">
+											<h:outputText value="#{cupons.dataValidade}">
+												<f:convertDateTime pattern="dd/MM/yyyy"
+													timeZone="America/Sao_Paulo"></f:convertDateTime>
+											</h:outputText>
+										</p:column>
 									</f:facet>
 									<f:facet name="input">
-										<p:inputText value="#{cupons.dataValidade}" style="width:100%"
-											id="modelInput" />
+										<p:calendar id="data" value="#{cupons.dataValidade}"
+											pattern="dd-MM-yyyy" mask="true" />
 									</f:facet>
 								</p:cellEditor>
 							</p:column>
 							<p:column headerText="Desconto (%)">
 								<p:cellEditor>
 									<f:facet name="output">
-										<h:outputText value="#{cupons.desconto}" />
+										<h:outputText value="#{cupons.desconto} %" />
 									</f:facet>
 									<f:facet name="input">
-										<p:inputText value="#{cupons.desconto}" style="width:100%"
-											 />
+										<p:inputText value="#{cupons.desconto}" style="width:100%" />
 									</f:facet>
 								</p:cellEditor>
 							</p:column>
