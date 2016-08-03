@@ -12,6 +12,7 @@
 		<!-- entidade mapeada -->
 		<class>br.com.betorolim.loja.modelo.Usuario</class>
 		<class>br.com.betorolim.loja.modelo.Livro</class>
+		<class>br.com.betorolim.loja.modelo.Cupom</class>
 
 		<properties>
 			<!-- dados da conexao -->
