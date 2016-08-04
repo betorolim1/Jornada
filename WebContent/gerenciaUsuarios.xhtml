@@ -33,7 +33,7 @@
 									</f:facet>
 									<f:facet name="input">
 										<p:inputText value="#{usuarios.login}" style="width:100%"
-											id="modelInput" />
+											id="modelInput" validator="ValidadorLoginUsuario"/>
 									</f:facet>
 								</p:cellEditor>
 							</p:column>
@@ -43,7 +43,7 @@
 										<h:outputText value="#{usuarios.email}" />
 									</f:facet>
 									<f:facet name="input">
-										<p:inputText value="#{usuarios.email}" style="width:100%" />
+										<p:inputText value="#{usuarios.email}" style="width:100%" validator="ValidadorEmailUsuario"/>
 									</f:facet>
 								</p:cellEditor>
 							</p:column>

@@ -70,24 +70,11 @@ public class UsuarioBean {
 	}
 
 	public void editaLinha(RowEditEvent event) throws IOException {
-		boolean erro = false;
 		usuario = (Usuario) event.getObject();
-		if (dao.existePorNome(usuario)) {
-			erro = true;
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_WARN, "E-mail ja utilizado", null));
-		}
-		if (dao.existePorEmail(usuario)) {
-			erro = true;
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_WARN, "Login ja utilizado", null));
-		}
-		if (erro == false) {
-			FacesMessage msg = new FacesMessage("Usuario atualizado", null);
-			FacesContext.getCurrentInstance().addMessage(null, msg);
-			dao.atualiza(usuario);
-			usuarios = dao.listaTodos();
-		}
+		FacesMessage msg = new FacesMessage("Usuario atualizado", null);
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+		dao.atualiza(usuario);
+		usuarios = dao.listaTodos();
 	}
 
 	public void cancelaEdicao(RowEditEvent event) {

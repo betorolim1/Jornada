@@ -20,7 +20,7 @@ public class UsuarioDao implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Inject
 	private EntityManager manager;
 
@@ -33,6 +33,13 @@ public class UsuarioDao implements Serializable {
 	public boolean existePorNome(Usuario usuario) {
 		Query busca = manager.createQuery("select usuario from Usuario usuario where " + "usuario.login = :login")
 				.setParameter("login", usuario.getLogin());
+		boolean encontrado = !busca.getResultList().isEmpty();
+		return encontrado;
+	}
+
+	public boolean existePorNomeObject(Object arg2) {
+		Query busca = manager.createQuery("select usuario from Usuario usuario where " + "usuario.login = :login")
+				.setParameter("login", arg2);
 		boolean encontrado = !busca.getResultList().isEmpty();
 		return encontrado;
 	}
@@ -75,6 +82,13 @@ public class UsuarioDao implements Serializable {
 		manager.getTransaction().begin();
 		this.manager.remove(usuario);
 		manager.getTransaction().commit();
+	}
+
+	public boolean existePorEmailObject(Object arg2) {
+		Query busca = manager.createQuery("select usuario from Usuario usuario where " + "usuario.email = :email")
+				.setParameter("email", arg2);
+		boolean encontrado = !busca.getResultList().isEmpty();
+		return encontrado;
 	}
 
 }
