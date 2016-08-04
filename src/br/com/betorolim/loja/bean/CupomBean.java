@@ -26,8 +26,6 @@ public class CupomBean implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	private ValidadorDataCupom dataValida = new ValidadorDataCupom();
 
 	private Cupom cupom = new Cupom();
 
@@ -45,13 +43,8 @@ public class CupomBean implements Serializable {
 	}
 
 	public String cadastrar() {
-		if (dataValida.isDataValida() == true) {
 			dao.adiciona(cupom);
 			return "admin?faces-redirect=true";
-		} else {
-			return null;
-		}
-
 	}
 
 	public List<Cupom> getCupons() {
@@ -72,12 +65,10 @@ public class CupomBean implements Serializable {
 
 	public void editaLinha(RowEditEvent event) throws IOException {
 		cupom = (Cupom) event.getObject();
-		if (dataValida.isDataValida() == true) {
 			FacesMessage msg = new FacesMessage("Cupom atualizado", null);
 			FacesContext.getCurrentInstance().addMessage(null, msg);
 			dao.atualiza(cupom);
 			cupons = dao.listaTodos();
-		}
 	}
 
 	public void cancelaEdicao(RowEditEvent event) {
