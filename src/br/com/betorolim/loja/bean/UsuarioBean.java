@@ -15,7 +15,6 @@ import br.com.betorolim.loja.dao.UsuarioDao;
 import br.com.betorolim.loja.modelo.Perfil;
 import br.com.betorolim.loja.modelo.Usuario;
 
-//@Model //@RequestScoped e @Named
 @Model
 public class UsuarioBean {
 

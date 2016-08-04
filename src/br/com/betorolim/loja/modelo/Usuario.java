@@ -2,6 +2,8 @@ package br.com.betorolim.loja.modelo;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,6 +31,7 @@ public class Usuario implements Serializable {
 	@Email
 	@NotEmpty(message="Email não deve ser vazio")
 	private String email;
+	@Enumerated(EnumType.STRING)
 	@NotNull(message="Perfil não deve ser vazio")
 	private Perfil perfil;
 	
