@@ -42,14 +42,12 @@ public class CupomBean implements Serializable {
 	}
 
 	public String cadastrar() {
-		if (verificaData(cupom) == true) {
+		//if (verificaData(cupom) == true) {
 			dao.adiciona(cupom);
 			return "admin?faces-redirect=true";
-		} else {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_FATAL, "Data anterior ao dia atual", null));
-			return null;
-		}
+		//} else {
+			//return null;
+		//}
 
 	}
 
@@ -69,22 +67,14 @@ public class CupomBean implements Serializable {
 		cupons = dao.listaTodos();
 	}
 
-	public boolean verificaData(Cupom cupom) {
-		Date dataAtual = new Date(System.currentTimeMillis());
-		return dataAtual.before(cupom.getDataValidade());
-	}
-
 	public void editaLinha(RowEditEvent event) throws IOException {
 		cupom = (Cupom) event.getObject();
-		if (verificaData(cupom) == true) {
+		//if (verificaData(cupom) == true) {
 			FacesMessage msg = new FacesMessage("Cupom atualizado", null);
 			FacesContext.getCurrentInstance().addMessage(null, msg);
 			dao.atualiza(cupom);
 			cupons = dao.listaTodos();
-		} else {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_FATAL, "Data anterior ao dia atual", null));
-		}
+		//}
 	}
 
 	public void cancelaEdicao(RowEditEvent event) {
