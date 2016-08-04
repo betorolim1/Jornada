@@ -24,7 +24,7 @@
 							<h:panelGrid columns="2" cellpadding="5">
 								<p:outputLabel for="data" value="Data de Validade:" />
 								<p:calendar id="data" value="#{cupomBean.cupom.dataValidade}"
-									pattern="dd-MM-yyyy" mask="true"/>
+									pattern="dd-MM-yyyy" mask="true" validator="ValidadorDataCupom"/>
 								<p:outputLabel value="Desconto (%):"></p:outputLabel>
 								<h:panelGrid columns="1" style="margin-bottom: 10px">
 									<h:outputText id="output"

@@ -16,6 +16,7 @@ import org.primefaces.event.RowEditEvent;
 import br.com.betorolim.loja.dao.CupomDao;
 import br.com.betorolim.loja.modelo.Cupom;
 import br.com.betorolim.loja.modelo.Livro;
+import br.com.betorolim.loja.validador.ValidadorDataCupom;
 
 @Named
 @RequestScoped
@@ -25,6 +26,8 @@ public class CupomBean implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	private ValidadorDataCupom dataValida = new ValidadorDataCupom();
 
 	private Cupom cupom = new Cupom();
 
@@ -42,12 +45,12 @@ public class CupomBean implements Serializable {
 	}
 
 	public String cadastrar() {
-		//if (verificaData(cupom) == true) {
+		if (dataValida.isDataValida() == true) {
 			dao.adiciona(cupom);
 			return "admin?faces-redirect=true";
-		//} else {
-			//return null;
-		//}
+		} else {
+			return null;
+		}
 
 	}
 
@@ -69,12 +72,12 @@ public class CupomBean implements Serializable {
 
 	public void editaLinha(RowEditEvent event) throws IOException {
 		cupom = (Cupom) event.getObject();
-		//if (verificaData(cupom) == true) {
+		if (dataValida.isDataValida() == true) {
 			FacesMessage msg = new FacesMessage("Cupom atualizado", null);
 			FacesContext.getCurrentInstance().addMessage(null, msg);
 			dao.atualiza(cupom);
 			cupons = dao.listaTodos();
-		//}
+		}
 	}
 
 	public void cancelaEdicao(RowEditEvent event) {
