@@ -37,24 +37,9 @@ public class UsuarioBean {
 	}
 
 	public void cadastrar() throws IOException {
-		try {
-			if (!dao.existePorNome(usuario)) {
-				if (!dao.existePorEmail(usuario)) {
-					loginBean.setUsuario(usuario);
-					dao.adiciona(usuario);
-					FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
-				} else {
-					FacesContext.getCurrentInstance().addMessage(null,
-							new FacesMessage(FacesMessage.SEVERITY_FATAL, "E-mail ja utilizado", null));
-				}
-			} else {
-				FacesContext.getCurrentInstance().addMessage(null,
-						new FacesMessage(FacesMessage.SEVERITY_FATAL, "Login ja utilizado", null));
-			}
-		} catch (PersistenceException e) {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_FATAL, "Não autorizado", null));
-		}
+		loginBean.setUsuario(usuario);
+		dao.adiciona(usuario);
+		FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
 	}
 
 	public List<Usuario> getUsuarios() {
