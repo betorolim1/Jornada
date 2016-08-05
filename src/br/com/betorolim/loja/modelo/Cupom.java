@@ -11,6 +11,8 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 public class Cupom {
 	
@@ -21,7 +23,15 @@ public class Cupom {
 	private Date dataValidade;
 	@Min(1) @Max(100)
 	private int desconto;
+	@NotEmpty(message="Codigo não pode ser vazio")
+	private String codigo;
 	
+	public String getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
 	public Long getId() {
 		return id;
 	}

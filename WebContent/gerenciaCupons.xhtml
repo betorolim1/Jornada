@@ -52,6 +52,16 @@
 									</f:facet>
 								</p:cellEditor>
 							</p:column>
+							<p:column headerText="Código">
+								<p:cellEditor>
+									<f:facet name="output">
+										<h:outputText value="#{cupons.codigo}" />
+									</f:facet>
+									<f:facet name="input">
+										<p:inputText value="#{cupons.codigo}" style="width:100%" validator="ValidadorCodigoCupom"/>
+									</f:facet>
+								</p:cellEditor>
+							</p:column>
 							<p:column style="width:32px">
 								<p:rowEditor />
 							</p:column>

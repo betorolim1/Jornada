@@ -2,7 +2,6 @@ package br.com.betorolim.loja.bean;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -15,8 +14,6 @@ import org.primefaces.event.RowEditEvent;
 
 import br.com.betorolim.loja.dao.CupomDao;
 import br.com.betorolim.loja.modelo.Cupom;
-import br.com.betorolim.loja.modelo.Livro;
-import br.com.betorolim.loja.validador.ValidadorDataCupom;
 
 @Named
 @RequestScoped

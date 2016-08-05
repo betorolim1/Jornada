@@ -4,11 +4,12 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import br.com.betorolim.loja.modelo.Cupom;
 
 public class CupomDao {
-	
+
 	@Inject
 	private EntityManager manager;
 
@@ -33,6 +34,13 @@ public class CupomDao {
 		manager.getTransaction().begin();
 		manager.merge(cupom);
 		manager.getTransaction().commit();
+	}
+
+	public boolean existeCodigo(Object arg2) {
+		Query busca = manager.createQuery("select cupom from Cupom cupom where cupom.codigo = :codigo")
+				.setParameter("codigo", arg2);
+		boolean encontrado = !busca.getResultList().isEmpty();
+		return encontrado;
 	}
 
 }
