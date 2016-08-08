@@ -56,5 +56,12 @@ public class LivroDao implements Serializable {
 		}
 		
 	}
+
+	public boolean existePorTitulo(Object arg2) {
+		Query busca = manager.createQuery("select livro from Livro livro where " + "livro.titulo = :titulo")
+				.setParameter("titulo", arg2);
+		boolean encontrado = !busca.getResultList().isEmpty();
+		return encontrado;
+	}
 	
 }

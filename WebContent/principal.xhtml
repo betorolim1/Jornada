@@ -94,12 +94,11 @@
 									</f:facet>
 								</p:panelGrid>
 								<br></br>
-								<p:commandButton value="Limpar"
+								<p:commandButton value="Limpar Busca"
 									action="#{livroBean.limparLivroEncontrado}"
 									rendered="#{livroBean.livroEncontrado!=null}"></p:commandButton>
-								<br></br>
 							</p:outputPanel>
-
+							<br></br>
 
 						</h:panelGrid>
 						<p:dataGrid var="livro" value="#{livroBean.livros}" columns="3"
