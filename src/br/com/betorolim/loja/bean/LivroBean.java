@@ -36,7 +36,10 @@ public class LivroBean implements Serializable {
 	private List<Livro> livros;
 	
 	private Livro livroSelecionado;
-
+	
+	private String tituloPesquisa;
+	
+	private Livro livroEncontrado;
 
 	@Inject
 	private LivroDao dao;
@@ -112,6 +115,27 @@ public class LivroBean implements Serializable {
 
 	public void setLivroSelecionado(Livro livroSelecionado) {
 		this.livroSelecionado = livroSelecionado;
+	}
+	
+	public void buscaLivroPorTitulo() {
+		livroEncontrado = dao.buscaLivroPorTitulo(tituloPesquisa);
+	}
+
+	public String getTituloPesquisa() {
+		return tituloPesquisa;
+	}
+
+	public void setTituloPesquisa(String tituloPesquisa) {
+		this.tituloPesquisa = tituloPesquisa;
+	}
+
+	public Livro getLivroEncontrado() {
+		return livroEncontrado;
+	}
+	
+	public String limparLivroEncontrado() {
+		livroEncontrado = null;
+		return "principal?faces-redirect=true";
 	}
 	
 }

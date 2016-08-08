@@ -6,6 +6,8 @@ import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
 
 import br.com.betorolim.loja.modelo.Livro;
 
@@ -42,6 +44,17 @@ public class LivroDao implements Serializable {
 		manager.getTransaction().begin();
 		manager.remove(manager.merge(livro));
 		manager.getTransaction().commit();
+	}
+
+	public Livro buscaLivroPorTitulo(String titulo) {
+		Query query = manager.createQuery("select livro from Livro livro where titulo = :titulo)")
+				.setParameter("titulo", titulo);
+		try{
+			return (Livro) query.getSingleResult();
+		}catch (NoResultException e){
+			return null;
+		}
+		
 	}
 	
 }
