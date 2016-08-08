@@ -59,7 +59,7 @@
 
 							<p:panel header="#{livro.titulo}" style="text-align:center">
 								<h:panelGrid columns="1" style="width:100%">
-									<p:graphicImage name="img/bg.jpg"
+									<p:graphicImage name="img/#{livro.capa}"
 										styleClass="imagemPagPrincipal" />
 
 									<h:outputText value="#{livro.autor}" />
@@ -83,7 +83,7 @@
 									rendered="#{not empty livroBean.livroSelecionado}"
 									columnClasses="label,value">
 									<f:facet name="header">
-										<p:graphicImage name="img/bg.jpg" />
+										<p:graphicImage name="img/#{livroBean.livroSelecionado.capa}" />
 									</f:facet>
 
 									<h:outputText value="Id:" />
@@ -108,7 +108,9 @@
 									<h:outputText value="#{livroBean.livroSelecionado.precoCombo}" />
 									
 									<f:facet name="footer">
-										asd
+										<p:commandButton value="Comprar Ebook"></p:commandButton>
+										<p:commandButton value="Comprar Impresso"></p:commandButton>
+										<p:commandButton value="Comprar Combo"></p:commandButton>
 									</f:facet>
 								</p:panelGrid>
 							</p:outputPanel>
