@@ -32,7 +32,8 @@
 										<h:outputText value="#{livros.titulo}" />
 									</f:facet>
 									<f:facet name="input">
-										<p:inputText value="#{livros.titulo}" style="width:100%"/>
+										<p:inputText value="#{livros.titulo}" style="width:100%"
+											validator="ValidadorTituloLivro" />
 									</f:facet>
 								</p:cellEditor>
 							</p:column>
@@ -82,7 +83,8 @@
 										<h:outputText value="#{livros.precoImpresso}" />
 									</f:facet>
 									<f:facet name="input">
-										<p:inputText value="#{livros.precoImpresso}" style="width:100%" />
+										<p:inputText value="#{livros.precoImpresso}"
+											style="width:100%" />
 									</f:facet>
 								</p:cellEditor>
 							</p:column>
