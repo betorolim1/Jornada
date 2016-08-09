@@ -56,51 +56,56 @@
 							<p:commandButton value="Pesquisar"
 								action="#{livroBean.buscaLivroPorTitulo}"
 								onclick="PF('dlg2').show();"></p:commandButton>
-
-							<p:outputPanel style="text-align:center;">
-								<p:panelGrid columns="2"
-									rendered="#{livroBean.livroEncontrado!=null}"
-									columnClasses="label,value">
-									<f:facet name="header">
-										<p:graphicImage name="img/#{livroBean.livroEncontrado.capa}" />
-									</f:facet>
-
-									<h:outputText value="Id:" />
-									<h:outputText value="#{livroBean.livroEncontrado.id}" />
-
-									<h:outputText value="Titulo:" />
-									<h:outputText value="#{livroBean.livroEncontrado.titulo}" />
-
-									<h:outputText value="Autor:" />
-									<h:outputText value="#{livroBean.livroEncontrado.autor}" />
-
-									<h:outputText value="Descrição" />
-									<h:outputText value="#{livroBean.livroEncontrado.descricao}" />
-
-									<h:outputText value="Preço Ebook" />
-									<h:outputText value="#{livroBean.livroEncontrado.precoEbook}" />
-
-									<h:outputText value="Preço Impresso" />
-									<h:outputText
-										value="#{livroBean.livroEncontrado.precoImpresso}" />
-
-									<h:outputText value="Preço Combo" />
-									<h:outputText value="#{livroBean.livroEncontrado.precoCombo}" />
-
-									<f:facet name="footer">
-										<p:commandButton value="Comprar Ebook"></p:commandButton>
-										<p:commandButton value="Comprar Impresso"></p:commandButton>
-										<p:commandButton value="Comprar Combo"></p:commandButton>
-									</f:facet>
-								</p:panelGrid>
-								<br></br>
-								<p:commandButton value="Limpar Busca"
-									action="#{livroBean.limparLivroEncontrado}"
-									rendered="#{livroBean.livroEncontrado!=null}"></p:commandButton>
-							</p:outputPanel>
-							<br></br>
-
 						</h:panelGrid>
+						
+						<br></br>
+						
+						<div class="col-xs-6 col-sm-4"></div>
+						
+						<p:outputPanel style="text-align:center;">
+							<p:panelGrid columns="2"
+								rendered="#{livroBean.livroEncontrado!=null}"
+								columnClasses="label,value">
+
+								<f:facet name="header">
+									<p:graphicImage name="img/#{livroBean.livroEncontrado.capa}" />
+								</f:facet>
+
+								<h:outputText value="Id:" />
+								<h:outputText value="#{livroBean.livroEncontrado.id}" />
+
+								<h:outputText value="Titulo:" />
+								<h:outputText value="#{livroBean.livroEncontrado.titulo}" />
+
+								<h:outputText value="Autor:" />
+								<h:outputText value="#{livroBean.livroEncontrado.autor}" />
+
+								<h:outputText value="Descrição" />
+								<h:outputText value="#{livroBean.livroEncontrado.descricao}" />
+
+								<h:outputText value="Preço Ebook" />
+								<h:outputText value="#{livroBean.livroEncontrado.precoEbook}" />
+
+								<h:outputText value="Preço Impresso" />
+								<h:outputText value="#{livroBean.livroEncontrado.precoImpresso}" />
+
+								<h:outputText value="Preço Combo" />
+								<h:outputText value="#{livroBean.livroEncontrado.precoCombo}" />
+
+								<f:facet name="footer">
+									<p:commandButton value="Comprar Ebook"></p:commandButton>
+									<p:commandButton value="Comprar Impresso"></p:commandButton>
+									<p:commandButton value="Comprar Combo"></p:commandButton>
+								</f:facet>
+							</p:panelGrid>
+							<br></br>
+							<p:commandButton value="Limpar Busca"
+								action="#{livroBean.limparLivroEncontrado}"
+								rendered="#{livroBean.livroEncontrado!=null}"></p:commandButton>
+						</p:outputPanel>
+						<br></br>
+
+
 						<p:dataGrid var="livro" value="#{livroBean.livros}" columns="3"
 							layout="grid" rows="12" paginator="true" id="livros"
 							paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
