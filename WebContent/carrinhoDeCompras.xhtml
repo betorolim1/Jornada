@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets" template="_template.xhtml">
+
+	<ui:define name="corpo">
+
+		<div class="menu col-xs-12 col-sm-12 col-md-12">
+
+			<div class="col-xs-4 col-sm-5 col-md-5"></div>
+
+			<h:form>
+
+
+				<p:growl id="growl" showDetail="false" sticky="true" />
+				<h:panelGrid columns="2" cellpadding="5">
+
+
+
+					<p:megaMenu style="margin-top:20px;"
+						styleClass="col-xs-12 col-sm-12 col-md-12">
+						<p:menuitem value="Login" action="#{loginBean.menuLogin}"
+							icon="ui-icon-check" update="growl"
+							rendered="#{loginBean.isLogado() == false}" />
+						<p:menuitem value="Principal" url="principal.xhtml"
+							icon="ui-icon-arrowreturn-1-w" update="growl" />
+						<p:menuitem value="Logout" action="#{loginBean.menuLogout}"
+							icon="ui-icon-close" update="growl"
+							rendered="#{loginBean.isLogado()}" />
+					</p:megaMenu>
+				</h:panelGrid>
+			</h:form>
+		</div>
+
+		<div class="container">
+
+			<div class="row">
+				<div class="box">
+
+					<h:form id="form">
+						<p:growl id="msgs" showDetail="false" />
+
+						<p:dataTable var="livros" value="#{carrinhoDeComprasBean.livros}"
+							paginator="true" rows="5" lazy="true" editable="true">
+
+							<p:ajax event="rowEdit"
+								listener="#{carrinhoDeComprasBean.editaLinha}"
+								update=":form:msgs" />
+							<p:ajax event="rowEditCancel"
+								listener="#{carrinhoDeComprasBean.cancelaEdicao}"
+								update=":form:msgs" />
+							<p:column headerText="Tipo">
+								<h:outputText value="#{livros.tipoComprado}" />
+							</p:column>
+							<p:column headerText="Titulo">
+								<h:outputText value="#{livros.titulo}" />
+							</p:column>
+							<p:column headerText="Autor">
+								<h:outputText value="#{livros.autor}" />
+							</p:column>
+							<p:column headerText="Descrição">
+								<h:outputText value="#{livros.descricao}" />
+							</p:column>
+							<p:column>
+								<f:facet name="header">Ação</f:facet>
+								<h:commandLink action="#{carrinhoDeComprasBean.remove(livros)}"
+									value="Remover">
+								</h:commandLink>
+							</p:column>
+						</p:dataTable>
+					</h:form>
+					<h4>
+						O total da compra foi de:
+						<h:outputText value="#{carrinhoDeComprasBean.total} R$"></h:outputText>
+					</h4>
+					
+					<p:commandButton value="Finalizar Compra"></p:commandButton>
+				</div>
+			</div>
+
+		</div>
+
+	</ui:define>
+</ui:decorate>

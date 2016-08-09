@@ -24,8 +24,9 @@
 						<p:menuitem value="Login" action="#{loginBean.menuLogin}"
 							icon="ui-icon-check" update="growl"
 							rendered="#{loginBean.isLogado() == false}" />
-						<p:menuitem value="Carrinho" action="#{loginBean.menuCarrinho}"
-							icon="ui-icon-cart" update="growl" />
+						<p:menuitem value="Carrinho" url="carrinhoDeCompras.xhtml"
+							icon="ui-icon-cart" update="growl"
+							rendered="#{loginBean.isLogado()}" />
 						<p:menuitem value="Logout" action="#{loginBean.menuLogout}"
 							icon="ui-icon-close" update="growl"
 							rendered="#{loginBean.isLogado()}" />
@@ -55,13 +56,13 @@
 							<p:inputText value="#{livroBean.tituloPesquisa}"></p:inputText>
 							<p:commandButton value="Pesquisar"
 								action="#{livroBean.buscaLivroPorTitulo}"
-								onclick="PF('dlg2').show();"></p:commandButton>
+								onclick="show();"></p:commandButton>
 						</h:panelGrid>
-						
+
 						<br></br>
-						
+
 						<div class="col-xs-6 col-sm-4"></div>
-						
+
 						<p:outputPanel style="text-align:center;">
 							<p:panelGrid columns="2"
 								rendered="#{livroBean.livroEncontrado!=null}"
@@ -93,9 +94,12 @@
 								<h:outputText value="#{livroBean.livroEncontrado.precoCombo}" />
 
 								<f:facet name="footer">
-									<p:commandButton value="Comprar Ebook"></p:commandButton>
-									<p:commandButton value="Comprar Impresso"></p:commandButton>
-									<p:commandButton value="Comprar Combo"></p:commandButton>
+									<p:commandButton value="Comprar Ebook"
+										action="#{carrinhoDeComprasBean.adicionaEbook(livroBean.livroEncontrado)}"></p:commandButton>
+									<p:commandButton value="Comprar Impresso"
+										action="#{carrinhoDeComprasBean.adicionaImpresso(livroBean.livroEncontrado)}"></p:commandButton>
+									<p:commandButton value="Comprar Combo"
+										action="#{carrinhoDeComprasBean.adicionaCombo(livroBean.livroEncontrado)}"></p:commandButton>
 								</f:facet>
 							</p:panelGrid>
 							<br></br>
@@ -167,9 +171,12 @@
 									<h:outputText value="#{livroBean.livroSelecionado.precoCombo}" />
 
 									<f:facet name="footer">
-										<p:commandButton value="Comprar Ebook"></p:commandButton>
-										<p:commandButton value="Comprar Impresso"></p:commandButton>
-										<p:commandButton value="Comprar Combo"></p:commandButton>
+										<p:commandButton value="Comprar Ebook"
+											action="#{carrinhoDeComprasBean.adicionaEbook(livroBean.livroSelecionado)}"></p:commandButton>
+										<p:commandButton value="Comprar Impresso"
+											action="#{carrinhoDeComprasBean.adicionaImpresso(livroBean.livroSelecionado)}"></p:commandButton>
+										<p:commandButton value="Comprar Combo"
+											action="#{carrinhoDeComprasBean.adicionaCombo(livroBean.livroSelecionado)}"></p:commandButton>
 									</f:facet>
 								</p:panelGrid>
 							</p:outputPanel>
