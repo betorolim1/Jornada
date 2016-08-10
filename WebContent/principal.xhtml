@@ -13,7 +13,6 @@
 
 			<h:form>
 
-
 				<p:growl id="growl" showDetail="false" sticky="true" />
 				<h:panelGrid columns="2" cellpadding="5">
 
@@ -51,15 +50,18 @@
 
 
 					<h:form id="form">
+						<p:growl id="growl" showDetail="false" sticky="true" />
 						<div class="col-xs-6 col-sm-4"></div>
 						<h:panelGrid columns="2">
 							<p:inputText value="#{livroBean.tituloPesquisa}"></p:inputText>
 							<p:commandButton value="Pesquisar"
-								action="#{livroBean.buscaLivroPorTitulo}"
-								onclick="show();"></p:commandButton>
+								action="#{livroBean.buscaLivroPorTitulo}" onclick="show();"></p:commandButton>
 						</h:panelGrid>
 
 						<br></br>
+
+						<p:panelGrid rendered="#{livroBean.livroEncontrado!=null}">
+						</p:panelGrid>
 
 						<div class="col-xs-6 col-sm-4"></div>
 
@@ -95,11 +97,14 @@
 
 								<f:facet name="footer">
 									<p:commandButton value="Comprar Ebook"
-										action="#{carrinhoDeComprasBean.adicionaEbook(livroBean.livroEncontrado)}"></p:commandButton>
+										action="#{carrinhoDeComprasBean.adicionaEbook(livroBean.livroEncontrado)}"
+										update="growl"></p:commandButton>
 									<p:commandButton value="Comprar Impresso"
-										action="#{carrinhoDeComprasBean.adicionaImpresso(livroBean.livroEncontrado)}"></p:commandButton>
+										action="#{carrinhoDeComprasBean.adicionaImpresso(livroBean.livroEncontrado)}"
+										update="growl"></p:commandButton>
 									<p:commandButton value="Comprar Combo"
-										action="#{carrinhoDeComprasBean.adicionaCombo(livroBean.livroEncontrado)}"></p:commandButton>
+										action="#{carrinhoDeComprasBean.adicionaCombo(livroBean.livroEncontrado)}"
+										update="growl"></p:commandButton>
 								</f:facet>
 							</p:panelGrid>
 							<br></br>
@@ -144,6 +149,7 @@
 								<p:panelGrid columns="2"
 									rendered="#{not empty livroBean.livroSelecionado}"
 									columnClasses="label,value">
+
 									<f:facet name="header">
 										<p:graphicImage name="img/#{livroBean.livroSelecionado.capa}" />
 									</f:facet>
@@ -172,11 +178,14 @@
 
 									<f:facet name="footer">
 										<p:commandButton value="Comprar Ebook"
-											action="#{carrinhoDeComprasBean.adicionaEbook(livroBean.livroSelecionado)}"></p:commandButton>
+											action="#{carrinhoDeComprasBean.adicionaEbook(livroBean.livroSelecionado)}"
+											update="growl"></p:commandButton>
 										<p:commandButton value="Comprar Impresso"
-											action="#{carrinhoDeComprasBean.adicionaImpresso(livroBean.livroSelecionado)}"></p:commandButton>
+											action="#{carrinhoDeComprasBean.adicionaImpresso(livroBean.livroSelecionado)}"
+											update="growl"></p:commandButton>
 										<p:commandButton value="Comprar Combo"
-											action="#{carrinhoDeComprasBean.adicionaCombo(livroBean.livroSelecionado)}"></p:commandButton>
+											action="#{carrinhoDeComprasBean.adicionaCombo(livroBean.livroSelecionado)}"
+											update="growl"></p:commandButton>
 									</f:facet>
 								</p:panelGrid>
 							</p:outputPanel>
