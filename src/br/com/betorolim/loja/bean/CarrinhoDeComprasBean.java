@@ -11,6 +11,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 import br.com.betorolim.loja.modelo.Livro;
+import br.com.betorolim.loja.modelo.Usuario;
 
 @Named
 @SessionScoped
@@ -21,7 +22,7 @@ public class CarrinhoDeComprasBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private LoginBean usuarioLogado = new LoginBean();
+	private Usuario usuario;
 
 	private Double total = 0.0;
 
@@ -44,8 +45,8 @@ public class CarrinhoDeComprasBean implements Serializable {
 	}
 
 	public void adicionaEbook(Livro livro) throws IOException {
-//		System.out.println(usuarioLogado.getUsuario());
-//		if(usuarioLogado.getUsuario()!=null){
+		System.out.println(usuario.getLogin());
+		if(usuario!=null){
 			livro.setTipoComprado("Ebook");
 			livros.add(livro);
 			total += livro.getPrecoEbook();
@@ -53,10 +54,10 @@ public class CarrinhoDeComprasBean implements Serializable {
 			FacesMessage msg = new FacesMessage("Livro adicionado",null);
 	        FacesContext.getCurrentInstance().addMessage(null, msg);
 			FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
-//		}else{
-//			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_WARN,"Faça login para comprar",null);
-//	        FacesContext.getCurrentInstance().addMessage(null, msg);
-//		}
+		}else{
+			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_WARN,"Faça login para comprar",null);
+	        FacesContext.getCurrentInstance().addMessage(null, msg);
+		}
 	}
 
 	public String adicionaImpresso(Livro livro) {
@@ -90,4 +91,13 @@ public class CarrinhoDeComprasBean implements Serializable {
 			break;
 		}
 	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 }
