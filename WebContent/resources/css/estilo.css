@@ -1,28 +1,31 @@
-.menu, .menuAdmin{
+.menu, .menuAdmin {
 	height: 100px;
 	background-color: white;
 	margin-bottom: 20px;
 	z-index: 100;
 }
 
-.imagemPagPrincipal{
+.imagemPagPrincipal {
 	width: 150px;
 }
 
-.menuAdmin{
+.label {
+	color: black;
+}
+
+.menuAdmin {
 	height: 200px;
 }
 
-.listaLivros{
+.listaLivros {
 	margin-top: 200px;
 }
 
-@media (max-width:408px){
-	.menu{
+@media ( max-width :408px) {
+	.menu {
 		height: 140px;
 	}
-	
-	.menuAdmin{
+	.menuAdmin {
 		height: 300px;
 	}
 }
