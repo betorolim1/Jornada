@@ -22,7 +22,7 @@ public class CarrinhoDeComprasBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private Usuario usuario;
+	private Usuario usuario = new Usuario();
 
 	private Double total = 0.0;
 
@@ -46,7 +46,7 @@ public class CarrinhoDeComprasBean implements Serializable {
 
 	public void adicionaEbook(Livro livro) throws IOException {
 		System.out.println(usuario.getLogin());
-		if(usuario!=null){
+//		if(usuario!=null){
 			livro.setTipoComprado("Ebook");
 			livros.add(livro);
 			total += livro.getPrecoEbook();
@@ -54,10 +54,10 @@ public class CarrinhoDeComprasBean implements Serializable {
 			FacesMessage msg = new FacesMessage("Livro adicionado",null);
 	        FacesContext.getCurrentInstance().addMessage(null, msg);
 			FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
-		}else{
-			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_WARN,"Faça login para comprar",null);
-	        FacesContext.getCurrentInstance().addMessage(null, msg);
-		}
+//		}else{
+//			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_WARN,"Faça login para comprar",null);
+//	        FacesContext.getCurrentInstance().addMessage(null, msg);
+//		}
 	}
 
 	public String adicionaImpresso(Livro livro) {

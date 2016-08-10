@@ -27,7 +27,7 @@ public class LoginBean implements Serializable {
 	@Inject
 	private UsuarioDao dao;
 	
-	private CarrinhoDeComprasBean carrinho = new CarrinhoDeComprasBean();
+	private CarrinhoDeComprasBean carrinho;
 	
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
@@ -49,7 +49,6 @@ public class LoginBean implements Serializable {
 		Usuario encontrado = dao.buscaUsuario(usuario);
 		if (encontrado != null) {
 			this.usuario = encontrado;
-			carrinho.setUsuario(usuario);
 			FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,
