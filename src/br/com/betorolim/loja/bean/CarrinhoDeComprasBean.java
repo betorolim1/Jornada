@@ -3,12 +3,19 @@ package br.com.betorolim.loja.bean;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.context.RequestContext;
+
+import br.com.betorolim.loja.modelo.FinalizaCompra;
 import br.com.betorolim.loja.modelo.Livro;
 
 @Named
@@ -23,6 +30,9 @@ public class CarrinhoDeComprasBean implements Serializable {
 	private Double total = 0.0;
 
 	private List<Livro> livros = new ArrayList<Livro>();
+
+	@Inject
+	private FinalizaCompra compra;
 
 	public Double getTotal() {
 		return total;
@@ -77,5 +87,20 @@ public class CarrinhoDeComprasBean implements Serializable {
 			System.out.println("C");
 			break;
 		}
+	}
+
+	public void finalizaCompra() throws IOException {
+		livros.clear();
+		total = 0.0;
+
+		FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
+	}
+
+	public FinalizaCompra getCompra() {
+		return compra;
+	}
+
+	public void setCompra(FinalizaCompra compra) {
+		this.compra = compra;
 	}
 }

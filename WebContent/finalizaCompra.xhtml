@@ -19,15 +19,19 @@
 							<div class="col-xs-6 col-sm-4"></div>
 							<h:panelGrid columns="2" cellpadding="5">
 								<p:outputLabel value="Numero do cartão:"></p:outputLabel>
-								<p:inputText value="#{finalizaCompraBean.numeroDoCartao}" />
+								<p:inputText
+									value="#{loginBean.carrinho.compra.numeroDoCartao}" />
 								<p:outputLabel value="CVV:"></p:outputLabel>
-								<p:password id="feedback" value="#{finalizaCompraBean.cvv}" />
+								<p:inputText value="#{loginBean.carrinho.compra.cvv}" />
 								<p:outputLabel value="Data de Validade:"></p:outputLabel>
-								<p:inputText value="#{finalizaCompraBean.dataValidade}"></p:inputText>
+								<p:calendar id="data"
+									value="#{loginBean.carrinho.compra.dataValidade}"
+									pattern="dd-MM-yyyy" mask="true" />
 								<p:outputLabel value="Endereço de Entrega:" />
-								<p:inputText value="#{finalizaCompraBean.endereco}"></p:inputText>
+								<p:inputText value="#{loginBean.carrinho.compra.endereco}"></p:inputText>
 								<p:commandButton value="Finalizar"
-									action="#{finalizaCompraBean.finalizaCompra}" update="growl"></p:commandButton>
+									action="#{loginBean.carrinho.finalizaCompra}" update="growl"></p:commandButton>
+
 							</h:panelGrid>
 						</h:form>
 					</div>
