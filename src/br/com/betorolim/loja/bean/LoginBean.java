@@ -73,6 +73,7 @@ public class LoginBean implements Serializable {
 	public void menuLogout() throws IOException {
 		if (this.isLogado()) {
 			this.usuario = new Usuario();
+			FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 			FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,

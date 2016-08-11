@@ -38,6 +38,17 @@ public class Autorizador implements PhaseListener {
 			} else {
 				return;
 			}
+		}
+		
+		if("/finalizaCompra.xhtml".equals(context.getViewRoot().getViewId())){
+			if(!loginBean.isLogado()){
+				NavigationHandler handler = context.getApplication().getNavigationHandler();
+				handler.handleNavigation(context, null, "carrinhoDeCompras?faces-redirect=true");
+
+				context.renderResponse();
+			}else{
+				return;
+			}
 		}*/
 
 	}

@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 @Named
@@ -53,6 +55,11 @@ public class FinalizaCompraBean implements Serializable{
 
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
+	}
+	
+	public void finalizaCompra() {
+		FacesMessage msg = new FacesMessage("Compra finalizada", "Obrigado!!");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 
 }

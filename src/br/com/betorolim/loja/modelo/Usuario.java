@@ -44,9 +44,6 @@ public class Usuario implements Serializable {
 	@NotNull(message = "Perfil não deve ser vazio")
 	private Perfil perfil;
 
-//	@OneToMany(cascade = CascadeType.PERSIST, mappedBy = "livraria")
-//	private List<Item> itens = new ArrayList<Item>();
-
 	public Long getId() {
 		return id;
 	}

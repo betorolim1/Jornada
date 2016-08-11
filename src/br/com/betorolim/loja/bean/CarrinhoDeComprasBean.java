@@ -45,24 +45,28 @@ public class CarrinhoDeComprasBean implements Serializable {
 		livro.setTipoComprado("Ebook");
 		livros.add(livro);
 		total += livro.getPrecoEbook();
-
-		FacesMessage msg = new FacesMessage("Livro adicionado", null);
+		
+		FacesMessage msg = new FacesMessage("Livro Adicionado ao Carrinho!", null);
 		FacesContext.getCurrentInstance().addMessage(null, msg);
-		FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
+		
 	}
 
-	public String adicionaImpresso(Livro livro) {
+	public void adicionaImpresso(Livro livro) {
 		livro.setTipoComprado("Impresso");
 		livros.add(livro);
 		total += livro.getPrecoImpresso();
-		return "principal?faces-redirect=true";
+		
+		FacesMessage msg = new FacesMessage("Livro Adicionado ao Carrinho!", null);
+		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 
-	public String adicionaCombo(Livro livro) {
+	public void adicionaCombo(Livro livro) {
 		livro.setTipoComprado("Combo");
 		livros.add(livro);
 		total += livro.getPrecoCombo();
-		return "principal?faces-redirect=true";
+		
+		FacesMessage msg = new FacesMessage("Livro Adicionado ao Carrinho!", null);
+		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 
 	public void remove(Livro livro) {
