@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
-import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
@@ -41,32 +40,25 @@ public class CarrinhoDeComprasBean implements Serializable {
 		this.livros = livros;
 	}
 
-	public void adicionaEbook(Livro livro) throws IOException {
+	public void adicionaEbook(Livro livro) throws IOException, InterruptedException {
 		livro.setTipoComprado("Ebook");
 		livros.add(livro);
 		total += livro.getPrecoEbook();
-		
-		FacesMessage msg = new FacesMessage("Livro Adicionado ao Carrinho!", null);
-		FacesContext.getCurrentInstance().addMessage(null, msg);
-		
+		FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
 	}
 
-	public void adicionaImpresso(Livro livro) {
+	public void adicionaImpresso(Livro livro) throws IOException {
 		livro.setTipoComprado("Impresso");
 		livros.add(livro);
 		total += livro.getPrecoImpresso();
-		
-		FacesMessage msg = new FacesMessage("Livro Adicionado ao Carrinho!", null);
-		FacesContext.getCurrentInstance().addMessage(null, msg);
+		FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
 	}
 
-	public void adicionaCombo(Livro livro) {
+	public void adicionaCombo(Livro livro) throws IOException {
 		livro.setTipoComprado("Combo");
 		livros.add(livro);
 		total += livro.getPrecoCombo();
-		
-		FacesMessage msg = new FacesMessage("Livro Adicionado ao Carrinho!", null);
-		FacesContext.getCurrentInstance().addMessage(null, msg);
+		FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
 	}
 
 	public void remove(Livro livro) {
