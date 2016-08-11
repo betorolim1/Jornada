@@ -42,7 +42,7 @@
 					<h:form id="form">
 						<p:growl id="msgs" showDetail="false" />
 
-						<p:dataTable var="livros" value="#{carrinhoDeComprasBean.livros}"
+						<p:dataTable var="livros" value="#{loginBean.carrinho.livros}"
 							paginator="true" rows="5" lazy="true" editable="true">
 
 							<p:ajax event="rowEdit"
@@ -65,7 +65,7 @@
 							</p:column>
 							<p:column>
 								<f:facet name="header">Ação</f:facet>
-								<h:commandLink action="#{carrinhoDeComprasBean.remove(livros)}"
+								<h:commandLink action="#{loginBean.carrinho.remove(livros)}"
 									value="Remover">
 								</h:commandLink>
 							</p:column>
@@ -73,10 +73,10 @@
 					</h:form>
 					<h4>
 						O total da compra foi de:
-						<h:outputText value="#{carrinhoDeComprasBean.total} R$"></h:outputText>
+						<h:outputText value="#{loginBean.carrinho.total} R$"></h:outputText>
 					</h4>
 					
-					<p:commandButton value="Finalizar Compra"></p:commandButton>
+					<p:button value="Finalizar Compra" outcome="finalizaCompra" ></p:button>
 				</div>
 			</div>
 

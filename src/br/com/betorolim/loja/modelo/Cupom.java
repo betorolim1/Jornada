@@ -19,10 +19,13 @@ public class Cupom {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	@NotNull(message="Data de validade não pode ser vazia")
 	private Date dataValidade;
+	
 	@Min(1) @Max(100)
 	private int desconto;
+	
 	@NotEmpty(message="Codigo não pode ser vazio")
 	private String codigo;
 	

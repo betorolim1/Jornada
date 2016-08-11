@@ -97,13 +97,13 @@
 
 								<f:facet name="footer">
 									<p:commandButton value="Comprar Ebook"
-										action="#{carrinhoDeComprasBean.adicionaEbook(livroBean.livroEncontrado)}"
+										action="#{loginBean.carrinho.adicionaEbook(livroBean.livroEncontrado)}"
 										update="growl"></p:commandButton>
 									<p:commandButton value="Comprar Impresso"
-										action="#{carrinhoDeComprasBean.adicionaImpresso(livroBean.livroEncontrado)}"
+										action="#{loginBean.carrinho.adicionaImpresso(livroBean.livroEncontrado)}"
 										update="growl"></p:commandButton>
 									<p:commandButton value="Comprar Combo"
-										action="#{carrinhoDeComprasBean.adicionaCombo(livroBean.livroEncontrado)}"
+										action="#{loginBean.carrinho.adicionaCombo(livroBean.livroEncontrado)}"
 										update="growl"></p:commandButton>
 								</f:facet>
 							</p:panelGrid>
@@ -178,13 +178,13 @@
 
 									<f:facet name="footer">
 										<p:commandButton value="Comprar Ebook"
-											action="#{carrinhoDeComprasBean.adicionaEbook(livroBean.livroSelecionado)}"
+											action="#{loginBean.carrinho.adicionaEbook(livroBean.livroSelecionado)}"
 											update="growl"></p:commandButton>
 										<p:commandButton value="Comprar Impresso"
-											action="#{carrinhoDeComprasBean.adicionaImpresso(livroBean.livroSelecionado)}"
+											action="#{loginBean.carrinho.adicionaImpresso(livroBean.livroSelecionado)}"
 											update="growl"></p:commandButton>
 										<p:commandButton value="Comprar Combo"
-											action="#{carrinhoDeComprasBean.adicionaCombo(livroBean.livroSelecionado)}"
+											action="#{loginBean.carrinho.adicionaCombo(livroBean.livroSelecionado)}"
 											update="growl"></p:commandButton>
 									</f:facet>
 								</p:panelGrid>
