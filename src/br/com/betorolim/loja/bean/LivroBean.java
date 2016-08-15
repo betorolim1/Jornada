@@ -24,26 +24,25 @@ import br.com.betorolim.loja.modelo.Livro;
 @Named
 @ViewScoped
 public class LivroBean implements Serializable {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-
 	private Livro livro = new Livro();
-	
+
 	private List<Livro> livros;
-	
+
 	private Livro livroSelecionado;
-	
+
 	private String tituloPesquisa;
-	
+
 	private Livro livroEncontrado;
 
 	@Inject
 	private LivroDao dao;
-	
+
 	public Livro getLivro() {
 		return livro;
 	}
@@ -51,30 +50,35 @@ public class LivroBean implements Serializable {
 	public void setLivro(Livro livro) {
 		this.livro = livro;
 	}
-	
-	public String cadastrar() {
+
+	public void cadastrar() throws IOException {
+		Livro livroCadastrado = dao.buscaLivroPorTitulo(livro.getTitulo());
+		if (livroCadastrado != null && !livroCadastrado.equals(livroCadastrado)) {
+			FacesMessage msg = new FacesMessage("Titulo ja existe", null);
+			FacesContext.getCurrentInstance().addMessage(null, msg);
+		}
 		dao.adiciona(livro);
-		return "admin?faces-redirect=true";
+		FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
 	}
-	
-	public void fileUpload(FileUploadEvent event){
-		try{
-			
+
+	public void fileUpload(FileUploadEvent event) {
+		try {
+
 			UploadedFile arq = event.getFile();
-			
-			 InputStream in = new BufferedInputStream(arq.getInputstream());
-			 File file = new File("C:\\Users\\Adalberto\\workspace\\Livraria\\WebContent\\resources\\img\\" + arq.getFileName());
-			 FileOutputStream fout = new FileOutputStream(file);
-			 while(in.available() != 0)
-			 {
-			 fout.write(in.read());
-			 }
-			 fout.close();
-			 
-			 this.livro.setCapa(arq.getFileName());
-			 System.out.println(livro.getCapa());
-			
-		}catch(Exception ex){
+
+			InputStream in = new BufferedInputStream(arq.getInputstream());
+			File file = new File(
+					"C:\\Users\\Adalberto\\workspace\\Livraria\\WebContent\\resources\\img\\" + arq.getFileName());
+			FileOutputStream fout = new FileOutputStream(file);
+			while (in.available() != 0) {
+				fout.write(in.read());
+			}
+			fout.close();
+
+			this.livro.setCapa(arq.getFileName());
+			System.out.println(livro.getCapa());
+
+		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 	}
@@ -89,22 +93,22 @@ public class LivroBean implements Serializable {
 	public void setLivros(List<Livro> livros) {
 		this.livros = livros;
 	}
-	
+
 	public void editaLinha(RowEditEvent event) throws IOException {
 		livro = (Livro) event.getObject();
 
 		FacesMessage msg = new FacesMessage("Livro atualizado", null);
-        FacesContext.getCurrentInstance().addMessage(null, msg);
+		FacesContext.getCurrentInstance().addMessage(null, msg);
 		dao.atualiza(livro);
-        livros = dao.listaTodos();
-    }
-     
-    public void cancelaEdicao(RowEditEvent event) {
-        FacesMessage msg = new FacesMessage("Edição cancelada", null);
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
-    
-    public void remove(Livro livro) {
+		livros = dao.listaTodos();
+	}
+
+	public void cancelaEdicao(RowEditEvent event) {
+		FacesMessage msg = new FacesMessage("Edição cancelada", null);
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+	}
+
+	public void remove(Livro livro) {
 		dao.remove(livro);
 		livros = dao.listaTodos();
 	}
@@ -116,7 +120,7 @@ public class LivroBean implements Serializable {
 	public void setLivroSelecionado(Livro livroSelecionado) {
 		this.livroSelecionado = livroSelecionado;
 	}
-	
+
 	public void buscaLivroPorTitulo() {
 		livroEncontrado = dao.buscaLivroPorTitulo(tituloPesquisa);
 	}
@@ -132,10 +136,10 @@ public class LivroBean implements Serializable {
 	public Livro getLivroEncontrado() {
 		return livroEncontrado;
 	}
-	
+
 	public String limparLivroEncontrado() {
 		livroEncontrado = null;
 		return "principal?faces-redirect=true";
 	}
-	
+
 }
