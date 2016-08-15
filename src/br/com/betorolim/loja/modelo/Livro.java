@@ -11,10 +11,22 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Livro {
+	
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		return super.equals(obj);
+	}
+	
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return this.id;
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private int id;
 
 	@NotEmpty(message = "Titulo não deve ser vazio")
 	private String titulo;
@@ -39,11 +51,11 @@ public class Livro {
 	@Transient
 	private String tipoComprado;
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -69,10 +81,6 @@ public class Livro {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public double getPrecoEbook() {

@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.application.FacesMessage.Severity;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -53,12 +54,13 @@ public class LivroBean implements Serializable {
 
 	public void cadastrar() throws IOException {
 		Livro livroCadastrado = dao.buscaLivroPorTitulo(livro.getTitulo());
-		if (livroCadastrado != null && !livroCadastrado.equals(livroCadastrado)) {
-			FacesMessage msg = new FacesMessage("Titulo ja existe", null);
-			FacesContext.getCurrentInstance().addMessage(null, msg);
+		if (livroCadastrado != null && !livroCadastrado.equals(livro)) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_FATAL, "Titulo ja existe!", null));
+		} else {
+			dao.adiciona(livro);
+			FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
 		}
-		dao.adiciona(livro);
-		FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
 	}
 
 	public void fileUpload(FileUploadEvent event) {
@@ -96,11 +98,18 @@ public class LivroBean implements Serializable {
 
 	public void editaLinha(RowEditEvent event) throws IOException {
 		livro = (Livro) event.getObject();
-
-		FacesMessage msg = new FacesMessage("Livro atualizado", null);
-		FacesContext.getCurrentInstance().addMessage(null, msg);
-		dao.atualiza(livro);
-		livros = dao.listaTodos();
+		
+		Livro livroCadastrado = dao.buscaLivroPorTitulo(livro.getTitulo());
+		if (livroCadastrado != null && !livroCadastrado.equals(livro)) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_FATAL, "Titulo ja existe!", null));
+			livros = dao.listaTodos();
+		} else {
+			FacesMessage msg = new FacesMessage("Livro atualizado", null);
+			FacesContext.getCurrentInstance().addMessage(null, msg);
+			dao.atualiza(livro);
+			livros = dao.listaTodos();
+		}
 	}
 
 	public void cancelaEdicao(RowEditEvent event) {

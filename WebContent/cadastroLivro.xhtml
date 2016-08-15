@@ -23,6 +23,7 @@
 						<h:form>
 
 							<h:panelGrid columns="2" cellpadding="5">
+							<h:inputHidden value="#{livroBean.livro.id}"></h:inputHidden>
 								<p:outputLabel value="Titulo:"></p:outputLabel>
 								<p:inputText value="#{livroBean.livro.titulo}"/>
 								<p:outputLabel value="Capa:"></p:outputLabel>

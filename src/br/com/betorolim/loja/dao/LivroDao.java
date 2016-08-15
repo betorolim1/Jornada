@@ -47,7 +47,7 @@ public class LivroDao implements Serializable {
 	}
 
 	public Livro buscaLivroPorTitulo(String titulo) {
-		Query query = manager.createQuery("select livro from Livro livro where titulo = :titulo)")
+		Query query = manager.createQuery("select livro from Livro livro where titulo = :titulo")
 				.setParameter("titulo", titulo);
 		try{
 			return (Livro) query.getSingleResult();
