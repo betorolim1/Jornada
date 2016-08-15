@@ -31,10 +31,6 @@
 								<p:password id="feedback" value="#{usuarioBean.usuario.senha}" />
 								<p:outputLabel value="E-mail:"></p:outputLabel>
 								<p:inputText value="#{usuarioBean.usuario.email}" validator="ValidadorEmailUsuario"></p:inputText>
-								<p:outputLabel value="Perfil:" />
-								<p:selectOneListbox value="#{usuarioBean.usuario.perfil}">
-									<f:selectItems value="#{usuarioBean.perfil}" var="tipo" itemValue="#{tipo}" />
-								</p:selectOneListbox>
 								<p:commandButton value="Cadastrar"
 									action="#{usuarioBean.cadastrar}"></p:commandButton>
 							</h:panelGrid>

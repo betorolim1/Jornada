@@ -8,7 +8,6 @@ import javax.faces.event.PhaseListener;
 import javax.inject.Inject;
 
 import br.com.betorolim.loja.bean.LoginBean;
-import br.com.betorolim.loja.modelo.Perfil;
 
 public class Autorizador implements PhaseListener {
 
@@ -25,12 +24,13 @@ public class Autorizador implements PhaseListener {
 		// TODO Auto-generated method stub
 		FacesContext context = event.getFacesContext();
 
-		/*if ("/admin.xhtml".equals(context.getViewRoot().getViewId())
+		if ("/admin.xhtml".equals(context.getViewRoot().getViewId())
 				|| "/cadastroLivro.xhtml".equals(context.getViewRoot().getViewId())
 				|| "/gerenciaLivros.xhtml".equals(context.getViewRoot().getViewId())
 				|| "/gerenciaUsuarios.xhtml".equals(context.getViewRoot().getViewId())) {
 
-			if (loginBean.getUsuario().getPerfil() == Perfil.Padrao || loginBean.getUsuario().getPerfil() == null) {
+			if (loginBean.getUsuario().getLogin() == null) {
+				
 				NavigationHandler handler = context.getApplication().getNavigationHandler();
 				handler.handleNavigation(context, null, "principal?faces-redirect=true");
 
@@ -39,17 +39,6 @@ public class Autorizador implements PhaseListener {
 				return;
 			}
 		}
-		
-		if("/finalizaCompra.xhtml".equals(context.getViewRoot().getViewId())){
-			if(!loginBean.isLogado()){
-				NavigationHandler handler = context.getApplication().getNavigationHandler();
-				handler.handleNavigation(context, null, "carrinhoDeCompras?faces-redirect=true");
-
-				context.renderResponse();
-			}else{
-				return;
-			}
-		}*/
 
 	}
 

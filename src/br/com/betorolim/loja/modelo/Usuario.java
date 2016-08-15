@@ -35,10 +35,6 @@ public class Usuario implements Serializable {
 	@NotEmpty(message = "Email não deve ser vazio")
 	private String email;
 
-	@Enumerated(EnumType.STRING)
-	@NotNull(message = "Perfil não deve ser vazio")
-	private Perfil perfil;
-
 	public Long getId() {
 		return id;
 	}
@@ -69,14 +65,6 @@ public class Usuario implements Serializable {
 
 	public void setLogin(String nome) {
 		this.login = nome;
-	}
-
-	public Perfil getPerfil() {
-		return perfil;
-	}
-
-	public void setPerfil(Perfil perfil) {
-		this.perfil = perfil;
 	}
 
 }
