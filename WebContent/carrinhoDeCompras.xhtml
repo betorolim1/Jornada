@@ -76,10 +76,7 @@
 						<h:outputText value="#{loginBean.carrinho.total} R$"></h:outputText>
 					</h4>
 
-					<p:button value="Finalizar Compra" outcome="finalizaCompra"
-						rendered="#{loginBean.isLogado()}"></p:button>
-					<p:outputLabel value="Faça login para finalizar a compra"
-						rendered="#{loginBean.isLogado() == false}"></p:outputLabel>
+					<p:button value="Finalizar Compra" outcome="finalizaCompra"></p:button>
 				</div>
 			</div>
 
