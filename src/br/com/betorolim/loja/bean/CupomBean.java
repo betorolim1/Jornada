@@ -39,9 +39,15 @@ public class CupomBean implements Serializable {
 		this.cupom = cupom;
 	}
 
-	public String cadastrar() {
+	public void cadastrar() throws IOException {
+		Cupom cupomEncontrado = dao.existeCodigo(cupom.getCodigo());
+		if (cupomEncontrado != null && !cupomEncontrado.equals(cupom)) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_FATAL, "Código ja existe!", null));
+		} else {
 			dao.adiciona(cupom);
-			return "admin?faces-redirect=true";
+			FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
+		}
 	}
 
 	public List<Cupom> getCupons() {
@@ -62,10 +68,16 @@ public class CupomBean implements Serializable {
 
 	public void editaLinha(RowEditEvent event) throws IOException {
 		cupom = (Cupom) event.getObject();
+		Cupom cupomEncontrado = dao.existeCodigo(cupom.getCodigo());
+		if (cupomEncontrado != null && !cupomEncontrado.equals(cupom)) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_FATAL, "Código ja existe!", null));
+		} else {
+			dao.atualiza(cupom);
 			FacesMessage msg = new FacesMessage("Cupom atualizado", null);
 			FacesContext.getCurrentInstance().addMessage(null, msg);
-			dao.atualiza(cupom);
-			cupons = dao.listaTodos();
+		}
+		cupons = dao.listaTodos();
 	}
 
 	public void cancelaEdicao(RowEditEvent event) {

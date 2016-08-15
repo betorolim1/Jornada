@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import br.com.betorolim.loja.modelo.Cupom;
@@ -36,11 +37,14 @@ public class CupomDao {
 		manager.getTransaction().commit();
 	}
 
-	public boolean existeCodigo(Object arg2) {
+	public Cupom existeCodigo(String codigo) {
 		Query busca = manager.createQuery("select cupom from Cupom cupom where cupom.codigo = :codigo")
-				.setParameter("codigo", arg2);
-		boolean encontrado = !busca.getResultList().isEmpty();
-		return encontrado;
+				.setParameter("codigo", codigo);
+		try {
+			return (Cupom) busca.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
 
 }

@@ -103,13 +103,14 @@ public class LivroBean implements Serializable {
 		if (livroCadastrado != null && !livroCadastrado.equals(livro)) {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_FATAL, "Titulo ja existe!", null));
-			livros = dao.listaTodos();
+			
 		} else {
 			FacesMessage msg = new FacesMessage("Livro atualizado", null);
 			FacesContext.getCurrentInstance().addMessage(null, msg);
 			dao.atualiza(livro);
-			livros = dao.listaTodos();
+			
 		}
+		livros = dao.listaTodos();
 	}
 
 	public void cancelaEdicao(RowEditEvent event) {

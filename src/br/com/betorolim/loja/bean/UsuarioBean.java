@@ -35,9 +35,26 @@ public class UsuarioBean {
 	}
 
 	public void cadastrar() throws IOException {
-		loginBean.setUsuario(usuario);
-		dao.adiciona(usuario);
-		FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
+		Usuario usuarioEncontradoLogin = dao.existePorNome(usuario.getLogin());
+		Usuario usuarioEncontradoEmail = dao.existePorEmail(usuario.getEmail());
+		boolean cadastra = true;
+		if (usuarioEncontradoLogin != null && !usuarioEncontradoLogin.equals(usuario)) {
+			cadastra = false;
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_FATAL, "Login ja existe!", null));
+		}
+
+		if (usuarioEncontradoEmail != null && !usuarioEncontradoEmail.equals(usuario)) {
+			cadastra = false;
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_FATAL, "E-mail ja existe!", null));
+		}
+
+		if (cadastra == true) {
+			loginBean.setUsuario(usuario);
+			dao.adiciona(usuario);
+			FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
+		}
 	}
 
 	public List<Usuario> getUsuarios() {
@@ -54,9 +71,26 @@ public class UsuarioBean {
 
 	public void editaLinha(RowEditEvent event) throws IOException {
 		usuario = (Usuario) event.getObject();
-		FacesMessage msg = new FacesMessage("Usuario atualizado", null);
-		FacesContext.getCurrentInstance().addMessage(null, msg);
-		dao.atualiza(usuario);
+		Usuario usuarioEncontradoLogin = dao.existePorNome(usuario.getLogin());
+		Usuario usuarioEncontradoEmail = dao.existePorEmail(usuario.getEmail());
+		boolean atualiza = true;
+		if (usuarioEncontradoLogin != null && !usuarioEncontradoLogin.equals(usuario)) {
+			atualiza = false;
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_FATAL, "Login ja existe!", null));
+		}
+
+		if (usuarioEncontradoEmail != null && !usuarioEncontradoEmail.equals(usuario)) {
+			atualiza = false;
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_FATAL, "E-mail ja existe!", null));
+		}
+
+		if (atualiza == true) {
+			dao.atualiza(usuario);
+			FacesMessage msg = new FacesMessage("Usuario atualizado", null);
+			FacesContext.getCurrentInstance().addMessage(null, msg);
+		}
 		usuarios = dao.listaTodos();
 	}
 

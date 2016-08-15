@@ -30,11 +30,14 @@ public class UsuarioDao implements Serializable {
 		manager.getTransaction().commit();
 	}
 
-	public boolean existePorNome(Usuario usuario) {
+	public Usuario existePorNome(String login) {
 		Query busca = manager.createQuery("select usuario from Usuario usuario where " + "usuario.login = :login")
-				.setParameter("login", usuario.getLogin());
-		boolean encontrado = !busca.getResultList().isEmpty();
-		return encontrado;
+				.setParameter("login", login);
+		try{
+			return (Usuario) busca.getSingleResult();
+		}catch(NoResultException e){
+			return null;
+		}
 	}
 
 	public boolean existePorNomeObject(Object arg2) {
@@ -44,11 +47,14 @@ public class UsuarioDao implements Serializable {
 		return encontrado;
 	}
 
-	public boolean existePorEmail(Usuario usuario) {
+	public Usuario existePorEmail(String email) {
 		Query busca = manager.createQuery("select usuario from Usuario usuario where " + "usuario.email = :email")
-				.setParameter("email", usuario.getEmail());
-		boolean encontrado = !busca.getResultList().isEmpty();
-		return encontrado;
+				.setParameter("email", email);
+		try{
+			return (Usuario) busca.getSingleResult();
+		}catch(NoResultException e){
+			return null;
+		}
 	}
 
 	public Usuario buscaUsuario(Usuario usuario) {

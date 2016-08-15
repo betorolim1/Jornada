@@ -11,17 +11,27 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Livro {
-	
-	@Override
-	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
-		return super.equals(obj);
-	}
-	
+
 	@Override
 	public int hashCode() {
-		// TODO Auto-generated method stub
-		return this.id;
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Livro other = (Livro) obj;
+		if (id != other.id)
+			return false;
+		return true;
 	}
 
 	@Id
