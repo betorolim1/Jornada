@@ -15,20 +15,20 @@
 						<h2 class="intro-text text-center">Finalizar Compra</h2>
 						<hr />
 						<h:form>
-							<p:growl id="growl" showDetail="true" sticky="true" />
+							<p:growl id="growl" showDetail="false" sticky="true" />
 							<div class="col-xs-6 col-sm-4"></div>
 							<h:panelGrid columns="2" cellpadding="5">
 								<p:outputLabel value="Numero do cartão:"></p:outputLabel>
 								<p:inputText
-									value="#{loginBean.carrinho.compra.numeroDoCartao}" />
+									value="#{loginBean.carrinho.compra.numeroDoCartao}" required="true"/>
 								<p:outputLabel value="CVV:"></p:outputLabel>
-								<p:inputText value="#{loginBean.carrinho.compra.cvv}" />
+								<p:inputText value="#{loginBean.carrinho.compra.cvv}" required="true"/>
 								<p:outputLabel value="Data de Validade:"></p:outputLabel>
 								<p:calendar id="data"
 									value="#{loginBean.carrinho.compra.dataValidade}"
-									pattern="dd-MM-yyyy" mask="true" />
+									pattern="dd-MM-yyyy" mask="true" required="true" validator="ValidadorData"/>
 								<p:outputLabel value="Endereço de Entrega:" />
-								<p:inputText value="#{loginBean.carrinho.compra.endereco}"></p:inputText>
+								<p:inputText value="#{loginBean.carrinho.compra.endereco}" required="true"></p:inputText>
 								<p:commandButton value="Finalizar"
 									action="#{loginBean.carrinho.finalizaCompra}" update="growl"></p:commandButton>
 

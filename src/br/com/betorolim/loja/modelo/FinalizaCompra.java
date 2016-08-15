@@ -8,6 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class FinalizaCompra implements Serializable {
@@ -21,9 +25,9 @@ public class FinalizaCompra implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private Integer numeroDoCartao;
+	private int numeroDoCartao;
 
-	private Integer cvv;
+	private int cvv;
 
 	private Date DataValidade;
 
@@ -32,19 +36,19 @@ public class FinalizaCompra implements Serializable {
 	@ManyToOne
 	private Usuario usuario;
 
-	public Integer getNumeroDoCartao() {
+	public int getNumeroDoCartao() {
 		return numeroDoCartao;
 	}
 
-	public void setNumeroDoCartao(Integer numeroDoCartao) {
+	public void setNumeroDoCartao(int numeroDoCartao) {
 		this.numeroDoCartao = numeroDoCartao;
 	}
 
-	public Integer getCvv() {
+	public int getCvv() {
 		return cvv;
 	}
 
-	public void setCvv(Integer cvv) {
+	public void setCvv(int cvv) {
 		this.cvv = cvv;
 	}
 

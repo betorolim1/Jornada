@@ -31,8 +31,7 @@ public class CarrinhoDeComprasBean implements Serializable {
 
 	private List<Livro> livros = new ArrayList<Livro>();
 
-	@Inject
-	private FinalizaCompra compra;
+	private FinalizaCompra compra = new FinalizaCompra();
 
 	public Double getTotal() {
 		return total;
