@@ -24,7 +24,7 @@
 							<h:panelGrid columns="2" cellpadding="5">
 								<p:outputLabel for="data" value="Data de Validade:" />
 								<p:calendar id="data" value="#{cupomBean.cupom.dataValidade}"
-									pattern="dd-MM-yyyy" mask="true" validator="ValidadorData" />
+									pattern="dd-MM-yyyy" mask="true" validator="ValidadorData"/>
 								<p:outputLabel value="Desconto (%):"></p:outputLabel>
 								<h:panelGrid columns="1" style="margin-bottom: 10px">
 									<h:outputText id="output" value="#{cupomBean.cupom.desconto} %" />
@@ -33,7 +33,7 @@
 									<p:slider for="desconto" display="output" style="width: 200px"
 										displayTemplate="{value} %" />
 									<p:outputLabel for="codigo" value="Código:"></p:outputLabel>
-									<p:inputText id="codigo" value="#{cupomBean.cupom.codigo}" validator="ValidadorCodigoCupom"></p:inputText>
+									<p:inputText id="codigo" value="#{cupomBean.cupom.codigo}"></p:inputText>
 								</h:panelGrid>
 								<br></br>
 								<br></br>

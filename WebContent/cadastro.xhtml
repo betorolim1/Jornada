@@ -26,11 +26,11 @@
 						<h:form>
 							<h:panelGrid columns="2" cellpadding="5">
 								<p:outputLabel value="Login:"></p:outputLabel>
-								<p:inputText value="#{usuarioBean.usuario.login}" validator="ValidadorLoginUsuario"/>
+								<p:inputText value="#{usuarioBean.usuario.login}"/>
 								<p:outputLabel value="Senha:"></p:outputLabel>
 								<p:password id="feedback" value="#{usuarioBean.usuario.senha}" />
 								<p:outputLabel value="E-mail:"></p:outputLabel>
-								<p:inputText value="#{usuarioBean.usuario.email}" validator="ValidadorEmailUsuario"></p:inputText>
+								<p:inputText value="#{usuarioBean.usuario.email}"></p:inputText>
 								<p:commandButton value="Cadastrar"
 									action="#{usuarioBean.cadastrar}"></p:commandButton>
 							</h:panelGrid>

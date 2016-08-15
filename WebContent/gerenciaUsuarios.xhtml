@@ -33,7 +33,7 @@
 									</f:facet>
 									<f:facet name="input">
 										<p:inputText value="#{usuarios.login}" style="width:100%"
-											id="modelInput" validator="ValidadorLoginUsuario"/>
+											id="modelInput" />
 									</f:facet>
 								</p:cellEditor>
 							</p:column>
@@ -43,20 +43,7 @@
 										<h:outputText value="#{usuarios.email}" />
 									</f:facet>
 									<f:facet name="input">
-										<p:inputText value="#{usuarios.email}" style="width:100%" validator="ValidadorEmailUsuario"/>
-									</f:facet>
-								</p:cellEditor>
-							</p:column>
-							<p:column headerText="Perfil">
-								<p:cellEditor>
-									<f:facet name="output">
-										<h:outputText value="#{usuarios.perfil}" />
-									</f:facet>
-									<f:facet name="input">
-										<p:selectOneListbox value="#{usuarios.perfil}">
-											<f:selectItems value="#{usuarioBean.perfil}" var="tipo"
-												itemValue="#{tipo}" />
-										</p:selectOneListbox>
+										<p:inputText value="#{usuarios.email}" style="width:100%" />
 									</f:facet>
 								</p:cellEditor>
 							</p:column>
