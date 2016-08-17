@@ -27,8 +27,6 @@ public class LoginBean implements Serializable {
 	@Inject
 	private UsuarioDao dao;
 	
-	private CarrinhoDeComprasBean carrinho = new CarrinhoDeComprasBean();
-	
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
@@ -80,13 +78,5 @@ public class LoginBean implements Serializable {
 					new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario não está logado", null));
 		}
 
-	}
-
-	public CarrinhoDeComprasBean getCarrinho() {
-		return carrinho;
-	}
-
-	public void setCarrinho(CarrinhoDeComprasBean carrinho) {
-		this.carrinho = carrinho;
 	}
 }

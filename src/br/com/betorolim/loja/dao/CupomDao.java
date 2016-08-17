@@ -44,10 +44,8 @@ public class CupomDao implements Serializable {
 	}
 
 	public Cupom existeCodigo(String codigo) {
-		System.out.println("Entrou cupomDao");
 		Query busca = manager.createQuery("select cupom from Cupom cupom where cupom.codigo = :codigo")
 				.setParameter("codigo", codigo);
-		System.out.println("Passou query");
 		try {
 			return (Cupom) busca.getSingleResult();
 		} catch (NoResultException e) {

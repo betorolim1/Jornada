@@ -40,6 +40,8 @@ public class CarrinhoDeComprasBean implements Serializable {
 
 	@Inject
 	private CupomDao cupomDao;
+	
+	boolean cupomValidado = false;
 
 	public Double getTotal() {
 		return total;
@@ -112,22 +114,26 @@ public class CarrinhoDeComprasBean implements Serializable {
 	}
 
 	public void validaCupom() {
-		System.out.println("Entrou metodo");
 		Cupom cupomEncontrado = cupomDao.existeCodigo(codigo);
-		System.out.println(cupomEncontrado);
 
 		Date dataAtual = new Date(System.currentTimeMillis());
 
-		if (cupomEncontrado != null) {
+		if (cupomEncontrado != null && cupomValidado == false) {
 			if (dataAtual.before(cupomEncontrado.getDataValidade())) {
-				total = total * (cupomEncontrado.getDesconto() / 100);
+				FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_INFO, "Cupom registrado com sucesso!", null));
+				total = total * (cupomEncontrado.getDesconto() / 100.0);
+				cupomValidado = true;
 			} else {
 				FacesContext.getCurrentInstance().addMessage(null,
 						new FacesMessage(FacesMessage.SEVERITY_FATAL, "Cupom expirado!", null));
 			}
-		} else {
+		} else if(cupomEncontrado == null) {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_FATAL, "Cupom não existe!", null));
+		}else if(cupomValidado == true){
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_FATAL, "Cupom já validado!", null));
 		}
 	}
 
