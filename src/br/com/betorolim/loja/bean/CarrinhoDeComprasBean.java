@@ -3,6 +3,7 @@ package br.com.betorolim.loja.bean;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,10 +35,11 @@ public class CarrinhoDeComprasBean implements Serializable {
 	private List<Livro> livros = new ArrayList<Livro>();
 
 	private FinalizaCompra compra = new FinalizaCompra();
-	
+
 	private String codigo;
-	
-	private CupomDao cupomDao = new CupomDao();
+
+	@Inject
+	private CupomDao cupomDao;
 
 	public Double getTotal() {
 		return total;
@@ -108,15 +110,24 @@ public class CarrinhoDeComprasBean implements Serializable {
 	public void setCompra(FinalizaCompra compra) {
 		this.compra = compra;
 	}
-	
+
 	public void validaCupom() {
 		System.out.println("Entrou metodo");
-		Cupom cupomEncontrado = new Cupom();
-		cupomEncontrado = cupomDao.existeCodigo(codigo);
+		Cupom cupomEncontrado = cupomDao.existeCodigo(codigo);
 		System.out.println(cupomEncontrado);
-		
-		if(cupomEncontrado != null){
-			total = total*(cupomEncontrado.getDesconto()/100);
+
+		Date dataAtual = new Date(System.currentTimeMillis());
+
+		if (cupomEncontrado != null) {
+			if (dataAtual.before(cupomEncontrado.getDataValidade())) {
+				total = total * (cupomEncontrado.getDesconto() / 100);
+			} else {
+				FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_FATAL, "Cupom expirado!", null));
+			}
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_FATAL, "Cupom não existe!", null));
 		}
 	}
 
@@ -127,5 +138,5 @@ public class CarrinhoDeComprasBean implements Serializable {
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
-	
+
 }
