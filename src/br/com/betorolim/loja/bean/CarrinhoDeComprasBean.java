@@ -15,6 +15,8 @@ import javax.inject.Named;
 
 import org.primefaces.context.RequestContext;
 
+import br.com.betorolim.loja.dao.CupomDao;
+import br.com.betorolim.loja.modelo.Cupom;
 import br.com.betorolim.loja.modelo.FinalizaCompra;
 import br.com.betorolim.loja.modelo.Livro;
 
@@ -32,6 +34,10 @@ public class CarrinhoDeComprasBean implements Serializable {
 	private List<Livro> livros = new ArrayList<Livro>();
 
 	private FinalizaCompra compra = new FinalizaCompra();
+	
+	private String codigo;
+	
+	private CupomDao cupomDao = new CupomDao();
 
 	public Double getTotal() {
 		return total;
@@ -102,4 +108,24 @@ public class CarrinhoDeComprasBean implements Serializable {
 	public void setCompra(FinalizaCompra compra) {
 		this.compra = compra;
 	}
+	
+	public void validaCupom() {
+		System.out.println("Entrou metodo");
+		Cupom cupomEncontrado = new Cupom();
+		cupomEncontrado = cupomDao.existeCodigo(codigo);
+		System.out.println(cupomEncontrado);
+		
+		if(cupomEncontrado != null){
+			total = total*(cupomEncontrado.getDesconto()/100);
+		}
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+	
 }
