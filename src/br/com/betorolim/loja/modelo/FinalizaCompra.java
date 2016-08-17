@@ -21,22 +21,19 @@ public class FinalizaCompra implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private int numeroDoCartao;
+	private Long numeroDoCartao;
 
 	private int cvv;
 
 	private Date DataValidade;
 
 	private String endereco;
-	
-	@ManyToOne
-	private Usuario usuario;
 
-	public int getNumeroDoCartao() {
+	public Long getNumeroDoCartao() {
 		return numeroDoCartao;
 	}
 
-	public void setNumeroDoCartao(int numeroDoCartao) {
+	public void setNumeroDoCartao(Long numeroDoCartao) {
 		this.numeroDoCartao = numeroDoCartao;
 	}
 

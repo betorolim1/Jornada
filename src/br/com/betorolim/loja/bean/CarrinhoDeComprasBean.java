@@ -40,7 +40,7 @@ public class CarrinhoDeComprasBean implements Serializable {
 
 	@Inject
 	private CupomDao cupomDao;
-	
+
 	boolean cupomValidado = false;
 
 	public Double getTotal() {
@@ -63,6 +63,9 @@ public class CarrinhoDeComprasBean implements Serializable {
 		livro.setTipoComprado("Ebook");
 		livros.add(livro);
 		total += livro.getPrecoEbook();
+		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_FATAL, "Livro inserido ao carrinho!", null));
 		FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
 	}
 
@@ -70,6 +73,9 @@ public class CarrinhoDeComprasBean implements Serializable {
 		livro.setTipoComprado("Impresso");
 		livros.add(livro);
 		total += livro.getPrecoImpresso();
+		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_FATAL, "Livro inserido ao carrinho!", null));
 		FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
 	}
 
@@ -77,6 +83,9 @@ public class CarrinhoDeComprasBean implements Serializable {
 		livro.setTipoComprado("Combo");
 		livros.add(livro);
 		total += livro.getPrecoCombo();
+		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_FATAL, "Livro inserido ao carrinho!", null));
 		FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
 	}
 
@@ -99,10 +108,17 @@ public class CarrinhoDeComprasBean implements Serializable {
 	}
 
 	public void finalizaCompra() throws IOException {
-		livros.clear();
-		total = 0.0;
-
-		FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
+		if (total == 0.0) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_FATAL, "Compra inválida!", null));
+		} else {
+			livros.clear();
+			total = 0.0;
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Compra finalizada com sucesso!", null));
+			FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+			FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
+		}
 	}
 
 	public FinalizaCompra getCompra() {
@@ -128,10 +144,10 @@ public class CarrinhoDeComprasBean implements Serializable {
 				FacesContext.getCurrentInstance().addMessage(null,
 						new FacesMessage(FacesMessage.SEVERITY_FATAL, "Cupom expirado!", null));
 			}
-		} else if(cupomEncontrado == null) {
+		} else if (cupomEncontrado == null) {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_FATAL, "Cupom não existe!", null));
-		}else if(cupomValidado == true){
+		} else if (cupomValidado == true) {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_FATAL, "Cupom já validado!", null));
 		}
