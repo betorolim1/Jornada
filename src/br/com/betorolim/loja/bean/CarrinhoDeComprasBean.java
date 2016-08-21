@@ -65,7 +65,7 @@ public class CarrinhoDeComprasBean implements Serializable {
 		total += livro.getPrecoEbook();
 		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage(FacesMessage.SEVERITY_FATAL, "Livro inserido ao carrinho!", null));
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "Livro inserido ao carrinho!", null));
 		FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
 	}
 
@@ -75,7 +75,7 @@ public class CarrinhoDeComprasBean implements Serializable {
 		total += livro.getPrecoImpresso();
 		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage(FacesMessage.SEVERITY_FATAL, "Livro inserido ao carrinho!", null));
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "Livro inserido ao carrinho!", null));
 		FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
 	}
 
@@ -85,7 +85,7 @@ public class CarrinhoDeComprasBean implements Serializable {
 		total += livro.getPrecoCombo();
 		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage(FacesMessage.SEVERITY_FATAL, "Livro inserido ao carrinho!", null));
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "Livro inserido ao carrinho!", null));
 		FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
 	}
 
@@ -159,6 +159,10 @@ public class CarrinhoDeComprasBean implements Serializable {
 
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
+	}
+	
+	public boolean isEmptyLivros() {
+		return this.livros.isEmpty();
 	}
 
 }

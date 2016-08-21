@@ -76,7 +76,11 @@
 						<h:outputText value="#{carrinhoDeComprasBean.total} R$"></h:outputText>
 					</h4>
 
-					<p:button value="Finalizar Compra" outcome="finalizaCompra"></p:button>
+					<p:button value="Finalizar Compra" outcome="finalizaCompra"
+						rendered="#{carrinhoDeComprasBean.isEmptyLivros() == false}"></p:button>
+					<p:outputLabel
+						rendered="#{carrinhoDeComprasBean.isEmptyLivros() == true}"
+						value="Para finalizar a compra adicione produtos ao carrinho"></p:outputLabel>
 				</div>
 			</div>
 
