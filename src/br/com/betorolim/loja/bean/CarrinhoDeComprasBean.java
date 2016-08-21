@@ -90,8 +90,13 @@ public class CarrinhoDeComprasBean implements Serializable {
 	}
 
 	public void remove(Livro livro) {
-		int encontrado = livros.indexOf(livro);
-		livros.remove(encontrado);
+		int encontrado = 0;
+		for (Livro livro1 : livros) {
+			if(livro1.equals(livro) && livro1.getTipoComprado() == livro.getTipoComprado()){
+				livros.remove(encontrado);
+			}
+			encontrado ++;
+		}
 		switch (livro.getTipoComprado()) {
 		case "Ebook":
 			total -= livro.getPrecoEbook();
