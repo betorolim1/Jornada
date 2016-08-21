@@ -54,7 +54,6 @@ public class LivroDao implements Serializable {
 		}catch (NoResultException e){
 			return null;
 		}
-		
 	}
 
 	public boolean existePorTitulo(Object arg2) {
@@ -64,4 +63,13 @@ public class LivroDao implements Serializable {
 		return encontrado;
 	}
 	
+	public Livro buscaLivroPorId(Integer idLivroSelecionado) {
+		Query query = manager.createQuery("select livro from Livro livro where id = :id")
+				.setParameter("id", idLivroSelecionado);
+		try{
+			return (Livro) query.getSingleResult();
+		}catch(NoResultException e){
+			return null;
+		}	
+	}
 }

@@ -65,7 +65,7 @@ public class CarrinhoDeComprasBean implements Serializable {
 		total += livro.getPrecoEbook();
 		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage(FacesMessage.SEVERITY_INFO, "Livro inserido ao carrinho!", null));
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "Ebook adicionado ao carrinho!", null));
 		FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
 	}
 
@@ -75,7 +75,7 @@ public class CarrinhoDeComprasBean implements Serializable {
 		total += livro.getPrecoImpresso();
 		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage(FacesMessage.SEVERITY_INFO, "Livro inserido ao carrinho!", null));
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "Impresso adicionado ao carrinho!", null));
 		FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
 	}
 
@@ -85,12 +85,13 @@ public class CarrinhoDeComprasBean implements Serializable {
 		total += livro.getPrecoCombo();
 		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage(FacesMessage.SEVERITY_INFO, "Livro inserido ao carrinho!", null));
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "Combo adicionado ao carrinho!", null));
 		FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
 	}
 
 	public void remove(Livro livro) {
-		livros.remove(livro);
+		int encontrado = livros.indexOf(livro);
+		livros.remove(encontrado);
 		switch (livro.getTipoComprado()) {
 		case "Ebook":
 			total -= livro.getPrecoEbook();

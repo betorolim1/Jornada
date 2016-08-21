@@ -35,6 +35,8 @@ public class LivroBean implements Serializable {
 
 	private List<Livro> livros;
 
+	private Integer idLivroSelecionado;
+	
 	private Livro livroSelecionado;
 
 	private String tituloPesquisa;
@@ -150,6 +152,15 @@ public class LivroBean implements Serializable {
 	public String limparLivroEncontrado() {
 		livroEncontrado = null;
 		return "principal?faces-redirect=true";
+	}
+
+	public Integer getIdLivroSelecionado() {
+		return idLivroSelecionado;
+	}
+
+	public void setIdLivroSelecionado(Integer idLivroSelecionado) {
+		this.idLivroSelecionado = idLivroSelecionado;
+		this.livroEncontrado = dao.buscaLivroPorId(idLivroSelecionado);
 	}
 
 }
