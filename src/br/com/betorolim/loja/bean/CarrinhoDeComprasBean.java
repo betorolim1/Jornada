@@ -19,6 +19,8 @@ import org.primefaces.context.RequestContext;
 import br.com.betorolim.loja.dao.CupomDao;
 import br.com.betorolim.loja.modelo.Cupom;
 import br.com.betorolim.loja.modelo.FinalizaCompra;
+import br.com.betorolim.loja.modelo.Formato;
+import br.com.betorolim.loja.modelo.Item;
 import br.com.betorolim.loja.modelo.Livro;
 
 @Named
@@ -32,7 +34,9 @@ public class CarrinhoDeComprasBean implements Serializable {
 
 	private Double total = 0.0;
 
-	private List<Livro> livros = new ArrayList<Livro>();
+	private List<Item> itens = new ArrayList<Item>();
+	
+	private Item item;
 
 	private FinalizaCompra compra = new FinalizaCompra();
 
@@ -51,17 +55,23 @@ public class CarrinhoDeComprasBean implements Serializable {
 		this.total = total;
 	}
 
-	public List<Livro> getLivros() {
-		return livros;
-	}
-
-	public void setLivros(List<Livro> livros) {
-		this.livros = livros;
-	}
-
 	public void adicionaEbook(Livro livro) throws IOException, InterruptedException {
-		livro.setTipoComprado("Ebook");
-		livros.add(livro);
+		item = new Item();
+		boolean mesmoLivro = false;
+		
+		item.setLivro(livro);
+		item.setFormato(Formato.Ebook);
+		
+		for (Item item1 : itens) {
+			if(item1.equals(item)){
+				item1.setQuantidade(item1.getQuantidade() + 1);
+				mesmoLivro = true;
+			}
+		}
+		if(!mesmoLivro){
+			itens.add(item);
+		}
+		
 		total += livro.getPrecoEbook();
 		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 		FacesContext.getCurrentInstance().addMessage(null,
@@ -70,8 +80,21 @@ public class CarrinhoDeComprasBean implements Serializable {
 	}
 
 	public void adicionaImpresso(Livro livro) throws IOException {
-		livro.setTipoComprado("Impresso");
-		livros.add(livro);
+		item = new Item();
+		boolean mesmoLivro = false;
+		
+		item.setLivro(livro);
+		item.setFormato(Formato.Impresso);
+		
+		for (Item item1 : itens) {
+			if(item1.equals(item)){
+				item1.setQuantidade(item1.getQuantidade() + 1);
+				mesmoLivro = true;
+			}
+		}
+		if(!mesmoLivro){
+			itens.add(item);
+		}
 		total += livro.getPrecoImpresso();
 		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 		FacesContext.getCurrentInstance().addMessage(null,
@@ -80,8 +103,21 @@ public class CarrinhoDeComprasBean implements Serializable {
 	}
 
 	public void adicionaCombo(Livro livro) throws IOException {
-		livro.setTipoComprado("Combo");
-		livros.add(livro);
+		item = new Item();
+		boolean mesmoLivro = false;
+		
+		item.setLivro(livro);
+		item.setFormato(Formato.Combo);
+		
+		for (Item item1 : itens) {
+			if(item1.equals(item)){
+				item1.setQuantidade(item1.getQuantidade() + 1);
+				mesmoLivro = true;
+			}
+		}
+		if(!mesmoLivro){
+			itens.add(item);
+		}
 		total += livro.getPrecoCombo();
 		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 		FacesContext.getCurrentInstance().addMessage(null,
@@ -89,26 +125,21 @@ public class CarrinhoDeComprasBean implements Serializable {
 		FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
 	}
 
-	public void remove(Livro livro) {
-		int encontrado = 0;
-		for (Livro livro1 : livros) {
-			if(livro1.equals(livro) && livro1.getTipoComprado() == livro.getTipoComprado()){
-				livros.remove(encontrado);
-			}
-			encontrado ++;
+	public void remove(Item item) {
+		if(item.getQuantidade() == 1){
+			itens.remove(item);
+		}else{
+			item.setQuantidade(item.getQuantidade() - 1);
 		}
-		switch (livro.getTipoComprado()) {
-		case "Ebook":
-			total -= livro.getPrecoEbook();
-			System.out.println("E");
+		switch (item.getFormato()) {
+		case Ebook:
+			total -= item.getLivro().getPrecoEbook();
 			break;
-		case "Impresso":
-			total -= livro.getPrecoImpresso();
-			System.out.println("I");
+		case Impresso:
+			total -= item.getLivro().getPrecoImpresso();
 			break;
-		case "Combo":
-			total -= livro.getPrecoCombo();
-			System.out.println("C");
+		case Combo:
+			total -= item.getLivro().getPrecoCombo();
 			break;
 		}
 	}
@@ -118,7 +149,7 @@ public class CarrinhoDeComprasBean implements Serializable {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_FATAL, "Compra inválida!", null));
 		} else {
-			livros.clear();
+			itens.clear();
 			total = 0.0;
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_INFO, "Compra finalizada com sucesso!", null));
@@ -167,8 +198,15 @@ public class CarrinhoDeComprasBean implements Serializable {
 		this.codigo = codigo;
 	}
 	
-	public boolean isEmptyLivros() {
-		return this.livros.isEmpty();
+	public boolean isEmptyItens() {
+		return itens.isEmpty();
 	}
 
+	public List<Item> getItens() {
+		return itens;
+	}
+
+	public void setItens(List<Item> itens) {
+		this.itens = itens;
+	}
 }

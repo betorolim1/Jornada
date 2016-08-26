@@ -42,7 +42,7 @@
 					<h:form id="form">
 						<p:growl id="msgs" showDetail="false" />
 
-						<p:dataTable var="livros" value="#{carrinhoDeComprasBean.livros}"
+						<p:dataTable var="itens" value="#{carrinhoDeComprasBean.itens}"
 							paginator="true" rows="5" lazy="true" editable="true">
 
 							<p:ajax event="rowEdit"
@@ -51,22 +51,25 @@
 							<p:ajax event="rowEditCancel"
 								listener="#{carrinhoDeComprasBean.cancelaEdicao}"
 								update=":form:msgs" />
+							<p:column headerText="Quantidade">
+								<h:outputText value="#{itens.quantidade}" />
+							</p:column>
 							<p:column headerText="Tipo">
-								<h:outputText value="#{livros.tipoComprado}" />
+								<h:outputText value="#{itens.formato}" />
 							</p:column>
 							<p:column headerText="Titulo">
-								<h:outputText value="#{livros.titulo}" />
+								<h:outputText value="#{itens.livro.titulo}" />
 							</p:column>
 							<p:column headerText="Autor">
-								<h:outputText value="#{livros.autor}" />
+								<h:outputText value="#{itens.livro.autor}" />
 							</p:column>
 							<p:column headerText="Descrição">
-								<h:outputText value="#{livros.descricao}" />
+								<h:outputText value="#{itens.livro.descricao}" />
 							</p:column>
 							<p:column>
 								<f:facet name="header">Ação</f:facet>
-								<h:commandLink action="#{carrinhoDeComprasBean.remove(livros)}"
-									value="Remover">
+								<h:commandLink action="#{carrinhoDeComprasBean.remove(itens)}"
+									value="Remover 1(um) Livro">
 								</h:commandLink>
 							</p:column>
 						</p:dataTable>
@@ -77,9 +80,9 @@
 					</h4>
 
 					<p:button value="Finalizar Compra" outcome="finalizaCompra"
-						rendered="#{carrinhoDeComprasBean.isEmptyLivros() == false}"></p:button>
+						rendered="#{carrinhoDeComprasBean.isEmptyItens() == false}"></p:button>
 					<p:outputLabel
-						rendered="#{carrinhoDeComprasBean.isEmptyLivros() == true}"
+						rendered="#{carrinhoDeComprasBean.isEmptyItens() == true}"
 						value="Para finalizar a compra adicione produtos ao carrinho"></p:outputLabel>
 				</div>
 			</div>

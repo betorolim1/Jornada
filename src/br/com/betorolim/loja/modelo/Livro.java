@@ -57,9 +57,6 @@ public class Livro {
 
 	@NotNull
 	private double precoCombo;
-	
-	@Transient
-	private String tipoComprado;
 
 	public int getId() {
 		return id;
@@ -124,13 +121,4 @@ public class Livro {
 	public void setCapa(String capa) {
 		this.capa = capa;
 	}
-
-	public String getTipoComprado() {
-		return tipoComprado;
-	}
-
-	public void setTipoComprado(String tipoComprado) {
-		this.tipoComprado = tipoComprado;
-	}
-
 }
