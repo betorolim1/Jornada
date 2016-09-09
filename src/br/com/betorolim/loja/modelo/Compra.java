@@ -72,4 +72,12 @@ public class Compra implements Serializable {
 		this.endereco = endereco;
 	}
 
+	public List<Item> getItens() {
+		return itens;
+	}
+
+	public void setItens(List<Item> itens) {
+		this.itens = itens;
+	}
+
 }
