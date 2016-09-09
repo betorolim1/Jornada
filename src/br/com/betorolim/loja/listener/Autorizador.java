@@ -24,9 +24,11 @@ public class Autorizador implements PhaseListener {
 		// TODO Auto-generated method stub
 		FacesContext context = event.getFacesContext();
 
-		/*if ("/admin.xhtml".equals(context.getViewRoot().getViewId())
+		if ("/admin.xhtml".equals(context.getViewRoot().getViewId())
 				|| "/cadastroLivro.xhtml".equals(context.getViewRoot().getViewId())
 				|| "/gerenciaLivros.xhtml".equals(context.getViewRoot().getViewId())
+				|| "/cadastroCupom.xhtml".equals(context.getViewRoot().getViewId())
+				|| "/gerenciaCupom.xhtml".equals(context.getViewRoot().getViewId())
 				|| "/gerenciaUsuarios.xhtml".equals(context.getViewRoot().getViewId())) {
 
 			if (loginBean.getUsuario().getLogin() == null) {
@@ -38,7 +40,7 @@ public class Autorizador implements PhaseListener {
 			} else {
 				return;
 			}
-		}*/
+		}
 
 	}
 
