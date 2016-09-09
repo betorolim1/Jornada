@@ -28,7 +28,7 @@ public class Autorizador implements PhaseListener {
 				|| "/cadastroLivro.xhtml".equals(context.getViewRoot().getViewId())
 				|| "/gerenciaLivros.xhtml".equals(context.getViewRoot().getViewId())
 				|| "/cadastroCupom.xhtml".equals(context.getViewRoot().getViewId())
-				|| "/gerenciaCupom.xhtml".equals(context.getViewRoot().getViewId())
+				|| "/gerenciaCupons.xhtml".equals(context.getViewRoot().getViewId())
 				|| "/gerenciaUsuarios.xhtml".equals(context.getViewRoot().getViewId())) {
 
 			if (loginBean.getUsuario().getLogin() == null) {
