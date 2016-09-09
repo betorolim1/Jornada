@@ -1,20 +1,24 @@
 package br.com.betorolim.loja.modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
 @Entity
-public class FinalizaCompra implements Serializable {
+public class Compra implements Serializable {
 
 	/**
 	 * 
@@ -24,6 +28,9 @@ public class FinalizaCompra implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@OneToMany(cascade={CascadeType.ALL})
+	private List<Item> itens = new ArrayList<Item>();
 
 	private Long numeroDoCartao;
 

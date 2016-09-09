@@ -13,7 +13,8 @@
 		<class>br.com.betorolim.loja.modelo.Usuario</class>
 		<class>br.com.betorolim.loja.modelo.Livro</class>
 		<class>br.com.betorolim.loja.modelo.Cupom</class>
-		<class>br.com.betorolim.loja.modelo.FinalizaCompra</class>
+		<class>br.com.betorolim.loja.modelo.Compra</class>
+		<class>br.com.betorolim.loja.modelo.Item</class>
 
 		<properties>
 			<!-- dados da conexao -->

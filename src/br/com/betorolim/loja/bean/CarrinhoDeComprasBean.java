@@ -16,9 +16,10 @@ import javax.inject.Named;
 
 import org.primefaces.context.RequestContext;
 
+import br.com.betorolim.loja.dao.CompraDao;
 import br.com.betorolim.loja.dao.CupomDao;
+import br.com.betorolim.loja.modelo.Compra;
 import br.com.betorolim.loja.modelo.Cupom;
-import br.com.betorolim.loja.modelo.FinalizaCompra;
 import br.com.betorolim.loja.modelo.Formato;
 import br.com.betorolim.loja.modelo.Item;
 import br.com.betorolim.loja.modelo.Livro;
@@ -38,12 +39,15 @@ public class CarrinhoDeComprasBean implements Serializable {
 	
 	private Item item;
 
-	private FinalizaCompra compra = new FinalizaCompra();
+	private Compra compra = new Compra();
 
 	private String codigo;
 
 	@Inject
 	private CupomDao cupomDao;
+	
+	@Inject
+	private CompraDao compraDao;
 
 	boolean cupomValidado = false;
 
@@ -151,6 +155,7 @@ public class CarrinhoDeComprasBean implements Serializable {
 		} else {
 			itens.clear();
 			total = 0.0;
+			compraDao.adiciona(compra);
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_INFO, "Compra finalizada com sucesso!", null));
 			FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
@@ -158,11 +163,11 @@ public class CarrinhoDeComprasBean implements Serializable {
 		}
 	}
 
-	public FinalizaCompra getCompra() {
+	public Compra getCompra() {
 		return compra;
 	}
 
-	public void setCompra(FinalizaCompra compra) {
+	public void setCompra(Compra compra) {
 		this.compra = compra;
 	}
 
@@ -175,7 +180,7 @@ public class CarrinhoDeComprasBean implements Serializable {
 			if (dataAtual.before(cupomEncontrado.getDataValidade())) {
 				FacesContext.getCurrentInstance().addMessage(null,
 						new FacesMessage(FacesMessage.SEVERITY_INFO, "Cupom registrado com sucesso!", null));
-				total = total * (cupomEncontrado.getDesconto() / 100.0);
+				total = total - total * (cupomEncontrado.getDesconto() / 100.0);
 				cupomValidado = true;
 			} else {
 				FacesContext.getCurrentInstance().addMessage(null,
