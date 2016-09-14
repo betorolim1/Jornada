@@ -29,7 +29,7 @@ public class Compra implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToMany(cascade={CascadeType.ALL})
+	@OneToMany(cascade={CascadeType.ALL},mappedBy="compra")
 	private List<Item> itens = new ArrayList<Item>();
 
 	private Long numeroDoCartao;
